@@ -1,0 +1,13 @@
+Digital-Liberty-Vanguards - Mei Huang, Henry Zhang 
+APCS1 - pd 5 
+
+
+TO-DO : (prioritized top to bottom) 
+Main Driver file (set up to test) 
+-Moving coordinates , navigating through maps
+-Inventory : holding items
+-Characters -- Players and Bosses  
+-Mini Games -- slot machine, and more to come. 
+-Items 
+
+*mostly work on this together simultaneously 
