@@ -3,11 +3,11 @@ APCS1 - pd 5
 
 
 TO-DO : (prioritized top to bottom) 
-Main Driver file (set up to test) 
--Moving coordinates , navigating through maps
--Inventory : holding items
+Main Driver file (set up to test) [1/2 hr ]
+-Moving coordinates , navigating through maps [1 hr] 
+-Inventory : holding items 
 -Characters -- Players and Bosses  
--Mini Games -- slot machine, and more to come. 
+-Mini Games -- slot machine, and more to come [1 hr++]  
 -Items 
 
 *mostly work on this together simultaneously 
