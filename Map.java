@@ -4,7 +4,7 @@ public class Map {
     private final static int DEFAULT_SIZE = 5;
 
     
-    private Cell[][] map;
+    public Cell[][] map;
     private int _playerRow;
     private int _playerColumn;
     private String playerLocation;
@@ -30,17 +30,9 @@ public class Map {
 	     _playerRow=rowPlayer;
 	     _playerColumn=columnPlayer;
 	     playerLocation = rowPlayer + "," + columnPlayer; //storing the starting point of the player marked as "0"
-         map[0][0].addItem();
+         map[0][0].addItem("Key");
          }
     
-
-/**
-
-    //constructor intializes an a*a map
-    public Map( int n ) {
-	    map = new Cell[n][n];
-    }
-    **/
     
     //return String representation of this map
     // (make it look like a map)
@@ -110,11 +102,19 @@ public class Map {
     
     public String theItem() { 
         String foo = "";
-        if (map[0][0].hasItem())  {
+        if (map[_playerRow][_playerColumn].hasItem())  {
         Cell a = new Cell();
-        foo += map[0][0]._item.toString(); }
+        foo += map[_playerRow][_playerColumn]._item.toString(); }
         return foo;
     }
+    
+    public int getPlayerColumn(){
+        return this._playerColumn;
+    }
+    public int getPlayerRow(){
+        return this._playerRow;
+    }
+    
 /*** add mutator to Cell so u can change the Cells appearance (whats strung and seen on the map)
         when the player enters that Cell. 
         

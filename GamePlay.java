@@ -33,21 +33,27 @@ public static void main (String [] args) {
         System.out.println(game.array);
         System.out.println("This is the map. Your location is marked by O. Where would you like to go?");
         } 
-        
         String userCommand=Keyboard.readString();
-        if (userCommand.equals("inventory")){
-            player1.inventory.add("Key");
-            System.out.println(player1.getInventory());        
+        if (game.array.map[game.array.getPlayerColumn()][game.array.getPlayerColumn()].hasItem()) { 
+            //those vars are private though so you cant // why do they have to be private 
+            player1.add(game.array.theItem());
         }
-        try{
-        game.array.movePlayer(userCommand); 
+            
         
+        if (userCommand.equals("inventory")) {
+         //   player1._inventory.add("Key");
+            System.out.println(player1._inventory);     
+            game.array.stopMap = 1;
+        }
+    //    else if (userCommand.equals)
+        
+        try {
+        game.array.movePlayer(userCommand); 
         }
         catch(ArrayIndexOutOfBoundsException e){
             System.out.println("You cannot go here");
             System.out.println(game.array);
             userCommand=Keyboard.readString();
-       
         }
         game.numMoves++;
         

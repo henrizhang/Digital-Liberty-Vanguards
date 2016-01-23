@@ -15,6 +15,7 @@ public class Cell {
     
     public Cell() { 
         _name = "X"; 
+        _item = null; 
         
         
       //default Cell constructor
@@ -35,18 +36,16 @@ public class Cell {
     }
     //accessor for enterText
     
-    public void addItem() { 
-        Item a = new Item("key"); 
+    public void addItem(String name) { 
+        Item a = new Item(name); 
         _item = a;
     
     }
         
     public boolean hasItem() { 
-        boolean fool = false;
-        if (!(_item == null))
-        fool = true; 
-        return fool ;
-    }
+        return (!(_item==null));
+        }
+    
     
 //    public Cell(String enterText) {
     
@@ -59,7 +58,7 @@ public class Cell {
         */
         
         
-    public boolean HasPlayer() {
+    public boolean hasPlayer() {
         boolean foo = false; 
         if (_name == "O") 
         foo = true; 
