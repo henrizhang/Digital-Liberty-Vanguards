@@ -5,6 +5,7 @@ public class Player extends Character {
     public Player() {
         super("Player");
         _inventory = new ArrayList <Object> ();  
+        _health = 30; 
     }
 
     
@@ -38,7 +39,15 @@ public class Player extends Character {
         }
         return stringInventory;
     }
+    
+    public int attack(Monster mon) { 
+        int damage = 5; 
+        mon.attacked(damage); 
+        return damage; 
 }
+}
+
+
     
     /**
     

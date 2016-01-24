@@ -8,6 +8,7 @@ public class GamePlay {
     //game or string that represents a game
     private boolean canContinue;
     //if a player has entered the right string to continue the game
+    
 public GamePlay() { 
     gameOver = false; 
     numMoves=-1;
@@ -20,7 +21,7 @@ public String newGame() {
     array=new Map();
     return start; 
 }
-
+    
 
 public static void main (String [] args) { 
     
@@ -77,11 +78,43 @@ public static void main (String [] args) {
         
         try {
             game.array.movePlayer(userCommand); 
+            
             if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasItem()) {
                 player1.add(game.array.theItem());
                 game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].removeItem(game.array.theItem());
             }
+            
+        else if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasMonster()) { 
+                System.out.println("Open inventory to see what you can use to fight");  
+                System.out.println("Press b+enter to attack"); 
+                while (player1.isAlive() && game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getMonster().isAlive()) {   
+                String command = Keyboard.readString(); 
+                if (command.equals("b")) { 
+                 player1.attack(game.array.theMonster()); 
+                 game.array.theMonster().attack(player1); 
+                System.out.println("You attacked " + game.array.theMonster() + " and dealt 5 damage"); 
+                System.out.println("You were attacked and lost 5 HP");   
+                }
+            }
+              if (!player1.isAlive() && (!game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getMonster().isAlive())) { 
+                System.out.println("You have both been killed"); 
+                game.gameOver = true; 
+                break;
+            }
+            else if (!game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getMonster().isAlive()) { 
+                System.out.println("Somehow even with your limited memory, you slained the " + game.array.theMonster()); 
+                game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].removeMonster(game.array.theMonster());
+                System.out.println("Press space+enter to return to the map"); 
+                
+            } 
+            else if (!player1.isAlive()) { 
+                System.out.println("You failed. " + game.array.theMonster() + " has killed you."); 
+                game.gameOver = true; 
+                }
         }
+                
+        }
+           
         
         catch(ArrayIndexOutOfBoundsException e){
             System.out.println("You cannot go here");
@@ -90,10 +123,16 @@ public static void main (String [] args) {
         }
         game.numMoves++;
         
+    
+    if (game.gameOver == true) {
+        System.out.println("Game ends"); 
+        break;
     }
+        
     System.out.println();
 }
     
+}
 }
 
 
