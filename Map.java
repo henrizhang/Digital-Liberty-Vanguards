@@ -1,7 +1,7 @@
 public class Map {
 
     //constant for default map size
-    private final static int DEFAULT_SIZE = 10;
+    private final static int DEFAULT_SIZE = 9;
 
     
     public Cell[][] map;
@@ -9,7 +9,7 @@ public class Map {
     private int _playerColumn;
     private String playerLocation;
     private Item item, pot; 
-    private Monster grim, zomb, joke; 
+    private Monster grim, zomb, joke, kil;
     private Slots slot; 
     private int stopMap = 0; 
     
@@ -46,12 +46,14 @@ public class Map {
          joke = new Joker(); 
          pot = new Potion();
          slot = new Slots(); 
+         kil = new KilGrave(); 
          map[0][0].addItem(item); 
          map[0][1].addMonster(grim); 
          map[3][4].addMonster(zomb);
          map[2][2].addMonster(joke);
          map[1][3].addItem(pot);
          map[4][2].addGame(slot); 
+         map[6][6].addMonster(kil); 
          }
 
          
@@ -120,7 +122,7 @@ public class Map {
            }
         
            if ((map[_playerRow][_playerColumn].hasItem()) && (map[_playerRow][_playerColumn].hasPotion())) { 
-                 System.out.println("You found a " + theItem() + "!" + " You will now gain some health!");  
+                 System.out.println("You found a " + theItem() + "!" + theItem().getPurpose());  
                stopMap = 1; } 
                else if (map[_playerRow][_playerColumn].hasItem()) {
           System.out.println("You found a " + theItem() + "! It's now in your inventory. You can now..");
@@ -171,6 +173,9 @@ public class Map {
     }
     public int getPlayerRow(){
         return this._playerRow;
+    }
+    public String getPlayerLocation(){
+        return this.playerLocation;
     }
     
 /*** add mutator to Cell so u can change the Cells appearance (whats strung and seen on the map)

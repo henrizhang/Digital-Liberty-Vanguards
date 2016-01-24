@@ -1,11 +1,11 @@
 import java.util.*;
 //http://stackoverflow.com/questions/3543771/best-practice-concerning-private-arraylist-and-other-such-constructions
 public class Player extends Char {
-    private ArrayList <Object> _inventory; 
+    private ArrayList <Item> _inventory; 
     public Player() {
         super("Player");
-        _inventory = new ArrayList <Object> ();  
-        _health = 100; 
+        _inventory = new ArrayList <Item> ();  
+        _health = 200; 
         _defense = 15;
         _strength = (int)(Math.random() * 45) + 20;
 
@@ -23,7 +23,7 @@ public class Player extends Char {
     }
     
     // adds Item to the Player's inventory using ArrayList method made public (mutator)
-    public void add(Object m){
+    public void add(Item m){
         _inventory.add(m);
     }
     

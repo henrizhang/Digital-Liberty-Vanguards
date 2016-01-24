@@ -2,14 +2,14 @@
 //simulates a slot machine in your very own terminal
 //Slots can be made up of Items ? and you collect another clue / item ? or u could just give a hint 
 public class Slots extends Game {
-
-    private static final String[] ITEMS = {
-	"Key", "Key", "Key", 
-	"Potion", "Potion", "Potion", 
-	"Clue","Clue","Clue"
-
-    };
-    private String[] _items; //to be init'd by each instance
+	private Item key; 
+	private Item pot;
+	private Item clue; 
+	private static final Item[] ITEMS = {
+		new Key(), new Key(), new Key(), 
+		new Potion(), new Potion(), new Potion(), 
+		new Clue(), new Clue(), new Clue() };
+  private Item[] _items; //to be init'd by each instance
 
 
     /*=====================================
@@ -22,7 +22,7 @@ public class Slots extends Game {
     	
 
 	//allocate memory for _ITEMS based on size of ITEMS
-	_items = new String [ITEMS.length];
+	_items = new Item [ITEMS.length];
 
 	//copy elements of ITEMS into _ITEMS
 	for (int i = 0; i < ITEMS.length; i++) {
@@ -46,7 +46,7 @@ public class Slots extends Game {
       post: elements at indices i, j are swapped
       =====================================*/
     private void swap( int i, int j ) {
-	String swap1;
+	Item swap1;
 	swap1 = _items[i];
 	_items[i] = _items[j];
 	_items[j] = swap1; 
@@ -76,7 +76,7 @@ public class Slots extends Game {
       false otherwise
    =====================================*/   
     public boolean jackpot() {
-	if (_items[0].equals(_items[1]) && _items[2].equals(_items[1]))
+	if (_items[0]._name.equals(_items[1]._name) && _items[2]._name.equals(_items[1]._name))
 	    return true;
 	else return false; 
     }
@@ -84,7 +84,7 @@ public class Slots extends Game {
     public String theWin() {
     	String win = ""; 
     	if (jackpot() == true)
-    		win+= _items[0];
+    		win+= _items[0]._name;
     		return win; 
     }
 
