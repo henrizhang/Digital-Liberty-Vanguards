@@ -4,6 +4,7 @@ public class Cell {
     private boolean hasPlayer; 
     private Item _item;
     private Monster _monsta; 
+    private Slots _slot; 
     //instance variables of Cell
     
 
@@ -88,6 +89,16 @@ public class Cell {
     public Monster getMonster() { 
         return _monsta; 
     } 
+    
+    public void addGame(Slots slot) { 
+        _slot = slot; 
+    }
+    
+    public boolean hasGame() { 
+        return (!(_slot==null));
+    }
+    
+    
 
     /***
     public void setEnemy(Enemy enemy) { 

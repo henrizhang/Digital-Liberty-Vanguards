@@ -10,6 +10,7 @@ public class Map {
     private String playerLocation;
     private Item item, pot; 
     private Monster grim, zomb, joke; 
+    private Slots slot; 
     private int stopMap = 0; 
     
 
@@ -44,12 +45,15 @@ public class Map {
          zomb = new Zombie(); 
          joke = new Joker(); 
          pot = new Potion();
+         slot = new Slots(); 
          map[0][0].addItem(item); 
          map[0][1].addMonster(grim); 
          map[3][4].addMonster(zomb);
          map[2][2].addMonster(joke);
          map[1][3].addItem(pot);
+         map[4][2].addGame(slot); 
          }
+
          
     
     

@@ -22,7 +22,6 @@ public String newGame() {
     return start; 
 }
     
-
 public static void main (String [] args) { 
     
     Player player1 = new Player();
@@ -120,7 +119,26 @@ public static void main (String [] args) {
                 game.gameOver = true; 
                 }
         }
-                
+        else if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasGame()) {
+            System.out.println("It's time for a little game");
+            Slots a = new Slots(); 
+            System.out.println( "Machine01 initial state:\t" + machine01 );
+            machine01.spinOnce();
+            System.out.println( "Machine01 state:\t" + machine01 );
+            System.out.println( "Preparing to spin until a mini win! . . ." );
+	System.out.println( "------------------------------------" );
+	
+	//if you haven't won, spin again until you win!
+	while( machine01.miniWin() == false ) {
+	    System.out.println( "Your spin..." + "\t" + machine01 );
+	    System.out.println( "LOSE\n" );
+	    machine01.spinOnce();
+	}
+
+	System.out.println( "====================================" );
+	System.out.println( "Your spin..." + "\t" + machine01 );
+	System.out.println( "WIN\n" );
+        }
         }
            
         
