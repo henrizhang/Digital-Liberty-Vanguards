@@ -1,7 +1,7 @@
 public class Map {
 
     //constant for default map size
-    private final static int DEFAULT_SIZE = 5;
+    private final static int DEFAULT_SIZE = 10;
 
     
     public Cell[][] map;
@@ -31,8 +31,8 @@ public class Map {
 	     
 	     Cell a = new Cell("O");
 	     
-	     int rowPlayer=2; // row of player's starting point 
-	     int columnPlayer=2; // column of player's starting point
+	     int rowPlayer=4; // row of player's starting point 
+	     int columnPlayer=4; // column of player's starting point
 	     map[rowPlayer][columnPlayer] = a; 
 	     
 	     _playerRow=rowPlayer;

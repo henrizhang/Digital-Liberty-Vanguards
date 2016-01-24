@@ -68,10 +68,21 @@ public static void main (String [] args) {
             System.out.println(player1.stringifyInventory());     
       //      game.array.stopMap = 1;  [private access] 
             System.out.println("(Press Space+enter to continue)");
-            String input2="sike";
+            String input2="sike"; 
             while(!(input2.equals(" "))){
                 input2=Keyboard.readString();    
             }
+            input2="sike";
+        }
+        
+        if (userCommand.equals("stats")){
+            System.out.println(player1.printStats());
+            String input2="sike";
+            System.out.println("(Press Space+enter to continue");
+            while(!(input2.equals(" "))){
+                input2=Keyboard.readString();
+            }
+            input2="sike";
         }
     //    else if (userCommand.equals)
         
@@ -123,19 +134,27 @@ public static void main (String [] args) {
             Slots play = new Slots(); 
             play.spinOnce(); 
             System.out.println( "play state:\t" + play );
+            System.out.println("Type spin and enter to play"); 
+            if (userCommand.equals("spin")) { 
             	while( play.jackpot() == false ) {
 	    System.out.println( "Your spin..." + "\t" + play);
 	    System.out.println( "LOSE\n" );
 	    play.spinOnce();
 	}
+            }
+            if (play.jackpot() == true) { 
 
 	System.out.println( "====================================" );
 	System.out.println( "Your spin..." + "\t" + play );
 	System.out.println( "JACKPOT!\n" );
              game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].removeGame(game.array.theGame());
              System.out.println("You won an"); 
+             System.out.println("Press space+enter to return to the map"); 
             }
+            
+        
        
+        }
         }
         
            

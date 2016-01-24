@@ -55,6 +55,9 @@ public int getHealth() {
     public void addHealth(int p) { 
         _health += p; 
 }
+    public String printStats(){
+        return ("Health:"+this._health+" Defense:"+this._defense+" Strength:"+this._strength+" Attack:"+this._attack);
+    }
 }
 
 
