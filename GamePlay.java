@@ -134,7 +134,7 @@ public static void main (String [] args) {
             Slots play = new Slots(); 
             play.spinOnce(); 
             System.out.println( "play state:\t" + play );
-            System.out.println("Type spin and enter to play"); 
+            System.out.println("Type spin to keep spinning. Press space+enter to spin once"); 
             if (userCommand.equals("spin")) { 
             	while( play.jackpot() == false ) {
 	    System.out.println( "Your spin..." + "\t" + play);
@@ -148,12 +148,21 @@ public static void main (String [] args) {
 	System.out.println( "Your spin..." + "\t" + play );
 	System.out.println( "JACKPOT!\n" );
              game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].removeGame(game.array.theGame());
-             System.out.println("You won an"); 
+             System.out.println("You won a " + play.theWin() + "!");
+             if (play.theWin().equals("Potion")) { 
+                 player1.addHealth((int) (Math.random() * 13 + 21));
+                 System.out.println("Your health is now " + player1.getHealth());
+             }
+             if (play.theWin().equals("Clue")) { 
+                 System.out.println("Your name starts......"); 
+             }
+             if (play.theWin().equals("Key")) {
+                 System.out.println("This key is useless");
+             }   
+                 
              System.out.println("Press space+enter to return to the map"); 
             }
             
-        
-       
         }
         }
         

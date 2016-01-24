@@ -3,34 +3,30 @@
 //Slots can be made up of Items ? and you collect another clue / item ? or u could just give a hint 
 public class Slots extends Game {
 
-    private static final String[] FRUITS = {
-	"lime", "lime", "lime", 
-	"lemon", "lemon", "lemon", 
-	"cherry", "cherry", "cherry", 
-	"orange", "orange", "orange", 
-	"grapefruit", "grapefruit", "grapefruit", 
-	"tangerine", "tangerine", "tangerine", 
-	"ugli", "ugli", "ugli",
-	"peach", "peach", "peach"
+    private static final String[] ITEMS = {
+	"Key", "Key", "Key", 
+	"Potion", "Potion", "Potion", 
+	"Clue","Clue","Clue"
+
     };
-    private String[] _fruits; //to be init'd by each instance
+    private String[] _items; //to be init'd by each instance
 
 
     /*=====================================
       Slots() -- default constructor
-      pre:  constant array FRUITS exists, has been initialized
-      post: mutable array _fruits contains same elements as FRUITS
+      pre:  constant array ITEMS exists, has been initialized
+      post: mutable array _ITEMS contains same elements as ITEMS
       =====================================*/
     public Slots() {
     	_gameName="Slots";
     	
 
-	//allocate memory for _fruits based on size of FRUITS
-	_fruits = new String [FRUITS.length];
+	//allocate memory for _ITEMS based on size of ITEMS
+	_items = new String [ITEMS.length];
 
-	//copy elements of FRUITS into _fruits
-	for (int i = 0; i < FRUITS.length; i++) {
-	    _fruits[i] = FRUITS[i];
+	//copy elements of ITEMS into _ITEMS
+	for (int i = 0; i < ITEMS.length; i++) {
+	    _items[i] = ITEMS[i];
 	}
     }
     
@@ -40,32 +36,32 @@ public class Slots extends Game {
       post: returns String of elements in slots 0 thru 2, separated by tabs
       =====================================*/
     public String toString() {
-	return _fruits[0] + "|" + _fruits[1] + "|" + _fruits[2];
+	return _items[0] + "|" + _items[1] + "|" + _items[2];
  
     }
 
     /*=====================================
       void swap(int,int) -- array swap util fxn
-      pre:  _fruits array exists
+      pre:  _ITEMS array exists
       post: elements at indices i, j are swapped
       =====================================*/
     private void swap( int i, int j ) {
 	String swap1;
-	swap1 = _fruits[i];
-	_fruits[i] = _fruits[j];
-	_fruits[j] = swap1; 
+	swap1 = _items[i];
+	_items[i] = _items[j];
+	_items[j] = swap1; 
     }
 
 
     /*=====================================
       void spinOnce() -- simulate a pull of the slot machine lever
-      pre:  _fruits array exists
-      post: randomized order of elements in _fruits array
+      pre:  _ITEMS array exists
+      post: randomized order of elements in _ITEMS array
       =====================================*/
     public void spinOnce() {
 	int s = 0;
-        for (int r = 0; r < 24; r++) {
-	    s = (int)(Math.random() * 23); 
+        for (int r = 0; r < 9; r++) {
+	    s = (int)(Math.random() * 8); 
 	    swap(r,s);
  
 	}
@@ -75,35 +71,23 @@ public class Slots extends Game {
 
     /*=====================================
       boolean jackpot() -- checks for a winning combo
-      pre:  _fruits is existing array
+      pre:  _ITEMS is existing array
       post: returns true if first 3 slots represent winning combo,
       false otherwise
    =====================================*/   
     public boolean jackpot() {
-	if (_fruits[0].equals(_fruits[1]) && _fruits[2].equals(_fruits[1]))
+	if (_items[0].equals(_items[1]) && _items[2].equals(_items[1]))
 	    return true;
 	else return false; 
     }
-
-
-    /*=====================================
-      boolean miniWin() -- checks for a winning combo
-      pre:  _fruits is existing array
-      post: returns true if first 3 slots represent winning combo,
-      or if first 3 slots mutually distinct, 
-      false otherwise
-   =====================================*/
-    public boolean miniWin() {
-    	boolean foo = false;
-	if ((!_fruits[0].equals(_fruits[1]) && (!_fruits[1].equals(_fruits[2]))))
-	    foo = true;
-	//do none match? 
-	else if (!(_fruits[0].equals(_fruits[1])) &&
-		 !(_fruits[1].equals(_fruits[2])) &&
-		 !(_fruits[1].equals(_fruits[2])))
-	    foo = true;
-	    return foo; 
+    
+    public String theWin() {
+    	String win = ""; 
+    	if (jackpot() == true)
+    		win+= _items[0];
+    		return win; 
     }
+
 					       
 
    
@@ -130,22 +114,6 @@ public class Slots extends Game {
 	System.out.println();
 
 	//test gamble-until-you-win mechanism
-
-	System.out.println( "Preparing to spin until a mini win! . . ." );
-	System.out.println( "------------------------------------" );
-	
-	//if you haven't won, spin again until you win!
-	while( machine01.miniWin() == false ) {
-	    System.out.println( "Your spin..." + "\t" + machine01 );
-	    System.out.println( "LOSE\n" );
-	    machine01.spinOnce();
-	}
-
-	System.out.println( "====================================" );
-	System.out.println( "Your spin..." + "\t" + machine01 );
-	System.out.println( "WIN\n" );
-
-
 
 	System.out.println( "Preparing to spin until...jackpot! . . ." );
 	System.out.println( "------------------------------------" );
