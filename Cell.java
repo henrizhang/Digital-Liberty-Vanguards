@@ -2,7 +2,7 @@ public class Cell {
     private String _name; 
     private String _enterText;
     private boolean hasPlayer; 
-    private Item _item; 
+    private Item _item;
     private Monster _monsta; 
     //instance variables of Cell
     
@@ -47,6 +47,13 @@ public class Cell {
     public boolean hasItem() { 
         return (!(_item==null));
         }
+        
+    public boolean hasPotion() {
+        boolean poo = false; 
+         if (_item._name.equals("Potion"))
+         poo = true;
+         return poo;
+    }
        
     public boolean hasPlayer() {
         boolean foo = false; 
@@ -64,6 +71,7 @@ public class Cell {
     public Item getItem(){
         return _item;
     }
+   
     
     public void addMonster(Monster mon) { 
         _monsta = mon; 

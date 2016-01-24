@@ -78,12 +78,20 @@ public static void main (String [] args) {
         
         try {
             game.array.movePlayer(userCommand); 
-            
-            if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasItem()) {
+                if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasItem()) {
+                     if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasPotion()) { 
+                    player1.addHealth(15);
+                    System.out.println("Your health is now " + player1.getHealth());
+                    game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].removeItem(game.array.theItem());
+                    System.out.println("Press space+enter to return to the map");
+                }
+                else { 
                 player1.add(game.array.theItem());
                 game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].removeItem(game.array.theItem());
+                
                 System.out.println("Press space+enter to return to the map"); 
             }
+                }
             
         else if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasMonster()) { 
          //       System.out.println("Open inventory to see what you can use to fight");  //inventory doesn't open up -- what if we don't use weapons? 

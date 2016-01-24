@@ -8,10 +8,10 @@ public class Map {
     private int _playerRow;
     private int _playerColumn;
     private String playerLocation;
-    private Item item;  
-    private Monster grim;
-    private Monster zomb; 
+    private Item item, pot; 
+    private Monster grim, zomb, joke; 
     private int stopMap = 0; 
+    
 
     //default constructor intializes a
    // DEFAULT_SIZE*DEFAULT_SIZE map
@@ -25,21 +25,32 @@ public class Map {
                 map[i][j] = k; // idea : make an array of string of diff location names + randomly populate the arrays? 
             }
 	     }
+            Cell locked = new Cell("-"); 
+            map[3][3] = locked; 
 	     
 	     Cell a = new Cell("O");
+	     
 	     int rowPlayer=2; // row of player's starting point 
 	     int columnPlayer=2; // column of player's starting point
 	     map[rowPlayer][columnPlayer] = a; 
+	     
 	     _playerRow=rowPlayer;
 	     _playerColumn=columnPlayer;
 	     playerLocation = rowPlayer + "," + columnPlayer; //storing the starting point of the player marked as "0"
+	     
+	     // bad thing about not doing it random is you have to manually do this for every cell there is .
          item = new Key();
          grim = new GrimReaper(); 
          zomb = new Zombie(); 
+         joke = new Joker(); 
+         pot = new Potion();
          map[0][0].addItem(item); 
          map[0][1].addMonster(grim); 
          map[3][4].addMonster(zomb);
+         map[2][2].addMonster(joke);
+         map[1][3].addItem(pot);
          }
+         
     
     
     //return String representation of this map
@@ -103,9 +114,13 @@ public class Map {
                _playerColumn+=1;
               playerLocation = _playerRow + "," + _playerColumn; 
            }
-           if (map[_playerRow][_playerColumn].hasItem()) {
-               stopMap = 1; 
+        
+           if ((map[_playerRow][_playerColumn].hasItem()) && (map[_playerRow][_playerColumn].hasPotion())) { 
+                 System.out.println("You found a " + theItem() + "!" + " You will now gain some health!");  
+               stopMap = 1; } 
+               else if (map[_playerRow][_playerColumn].hasItem()) {
           System.out.println("You found a " + theItem() + "! It's now in your inventory. You can now..");
+          stopMap = 1; 
         }
         
         else if (map[_playerRow][_playerColumn].hasMonster()) {
@@ -114,6 +129,12 @@ public class Map {
         }
         else stopMap = 0; 
        }
+       
+       
+      
+    
+               
+               
 
  /******
     public String theItem() { 

@@ -5,8 +5,8 @@ public class Player extends Char {
     public Player() {
         super("Player");
         _inventory = new ArrayList <Object> ();  
-        _health = 60; 
-        _defense = 20;
+        _health = 100; 
+        _defense = 15;
         _strength = (int)(Math.random() * 45) + 20;
 
     }
@@ -47,6 +47,13 @@ public class Player extends Char {
         int damage = (int) (Math.random() * ((_strength*_attack) - mon._defense));
         mon.attacked(damage); 
         return damage; 
+}
+
+public int getHealth() {
+    return _health;
+} 
+    public void addHealth(int p) { 
+        _health += p; 
 }
 }
 

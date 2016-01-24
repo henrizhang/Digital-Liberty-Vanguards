@@ -13,9 +13,7 @@ public abstract class Item {
     public String getPurpose() {
         return _purpose; 
 }
-
 }
-    
 
 
 
