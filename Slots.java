@@ -1,6 +1,6 @@
 //class Slots
 //simulates a slot machine in your very own terminal
-
+//Slots can be made up of Items ? and you collect another clue / item ? or u could just give a hint 
 public class Slots extends Game {
 
     private static final String[] FRUITS = {

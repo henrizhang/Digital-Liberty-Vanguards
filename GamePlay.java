@@ -120,26 +120,24 @@ public static void main (String [] args) {
                 }
         }
         else if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasGame()) {
-            System.out.println("It's time for a little game");
-            Slots a = new Slots(); 
-            System.out.println( "Machine01 initial state:\t" + machine01 );
-            machine01.spinOnce();
-            System.out.println( "Machine01 state:\t" + machine01 );
-            System.out.println( "Preparing to spin until a mini win! . . ." );
-	System.out.println( "------------------------------------" );
-	
-	//if you haven't won, spin again until you win!
-	while( machine01.miniWin() == false ) {
-	    System.out.println( "Your spin..." + "\t" + machine01 );
+            Slots play = new Slots(); 
+            play.spinOnce(); 
+            System.out.println( "play state:\t" + play );
+            	while( play.jackpot() == false ) {
+	    System.out.println( "Your spin..." + "\t" + play);
 	    System.out.println( "LOSE\n" );
-	    machine01.spinOnce();
+	    play.spinOnce();
 	}
 
 	System.out.println( "====================================" );
-	System.out.println( "Your spin..." + "\t" + machine01 );
-	System.out.println( "WIN\n" );
+	System.out.println( "Your spin..." + "\t" + play );
+	System.out.println( "JACKPOT!\n" );
+             game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].removeGame(game.array.theGame());
+             System.out.println("You won an"); 
+            }
+       
         }
-        }
+        
            
         
         catch(ArrayIndexOutOfBoundsException e){

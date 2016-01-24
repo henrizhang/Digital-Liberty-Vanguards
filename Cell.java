@@ -89,6 +89,9 @@ public class Cell {
     public Monster getMonster() { 
         return _monsta; 
     } 
+    public Slots getGame() {
+        return _slot;
+    }
     
     public void addGame(Slots slot) { 
         _slot = slot; 
@@ -98,7 +101,9 @@ public class Cell {
         return (!(_slot==null));
     }
     
-    
+    public void removeGame(Slots slot) {
+        _slot = null; 
+    }
 
     /***
     public void setEnemy(Enemy enemy) { 

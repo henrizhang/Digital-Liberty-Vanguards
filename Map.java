@@ -131,6 +131,12 @@ public class Map {
             stopMap = 1; 
             System.out.println("A " + theMonster() + " has appeared. Prepare to FIGHT"); 
         }
+        
+        else if (map[_playerRow][_playerColumn].hasGame()) {
+          
+             System.out.println("It's time for a little game");
+             stopMap = 1; 
+        }
         else stopMap = 0; 
        }
        
@@ -155,6 +161,9 @@ public class Map {
     }
     public Monster theMonster() { 
         return map[_playerRow][_playerColumn].getMonster(); 
+    }
+    public Slots theGame() {
+        return map[_playerRow][_playerColumn].getGame(); 
     }
         
     public int getPlayerColumn(){
