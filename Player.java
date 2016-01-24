@@ -23,6 +23,9 @@ public class Player extends Character {
         _inventory.add(m);
     }
     
+    public void remove(Object n){
+        _inventory.remove(n); 
+    }
     
     public String stringifyInventory(){
         String stringInventory="";

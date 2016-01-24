@@ -40,6 +40,10 @@ public class Cell {
         _item = name ;
     
     }
+    
+    public void removeItem(Item name) { 
+        _item = null; 
+    }
         
     public boolean hasItem() { 
         return (!(_item==null));

@@ -72,10 +72,9 @@ public static void main (String [] args) {
         
         try {
         game.array.movePlayer(userCommand); 
-        if (game.array.map[game.array.getPlayerColumn()][game.array.getPlayerColumn()].hasItem()) {
-            System.out.println(game.array.theItem()); 
-            System.out.println(game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasItem());
+        if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasItem()) {
             player1.add(game.array.theItem());
+            game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].removeItem(game.array.theItem());
             
         }
         }

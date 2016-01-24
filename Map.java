@@ -115,7 +115,7 @@ public class Map {
     }
 *****/ 
 
-    public Object theItem() { 
+    public Item theItem() { 
             return map[_playerRow][_playerColumn]._item; 
     }
         
