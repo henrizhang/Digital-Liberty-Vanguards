@@ -1,11 +1,14 @@
 import java.util.*;
 //http://stackoverflow.com/questions/3543771/best-practice-concerning-private-arraylist-and-other-such-constructions
-public class Player extends Character {
+public class Player extends Char {
     private ArrayList <Object> _inventory; 
     public Player() {
         super("Player");
         _inventory = new ArrayList <Object> ();  
-        _health = 30; 
+        _health = 60; 
+        _defense = 20;
+        _strength = (int)(Math.random() * 45) + 20;
+
     }
 
     
@@ -41,7 +44,7 @@ public class Player extends Character {
     }
     
     public int attack(Monster mon) { 
-        int damage = 5; 
+        int damage = (int) (Math.random() * ((_strength*_attack) - mon._defense));
         mon.attacked(damage); 
         return damage; 
 }

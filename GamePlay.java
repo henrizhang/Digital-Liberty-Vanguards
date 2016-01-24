@@ -82,24 +82,24 @@ public static void main (String [] args) {
             if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasItem()) {
                 player1.add(game.array.theItem());
                 game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].removeItem(game.array.theItem());
+                System.out.println("Press space+enter to return to the map"); 
             }
             
         else if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasMonster()) { 
-                System.out.println("Open inventory to see what you can use to fight");  
+         //       System.out.println("Open inventory to see what you can use to fight");  //inventory doesn't open up -- what if we don't use weapons? 
                 System.out.println("Press b+enter to attack"); 
                 while (player1.isAlive() && game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getMonster().isAlive()) {   
                 String command = Keyboard.readString(); 
                 if (command.equals("b")) { 
-                 player1.attack(game.array.theMonster()); 
-                 game.array.theMonster().attack(player1); 
-                System.out.println("You attacked " + game.array.theMonster() + " and dealt 5 damage"); 
-                System.out.println("You were attacked and lost 5 HP");   
+                 int a1 = player1.attack(game.array.theMonster()); 
+                 int a2 = game.array.theMonster().attack(player1); 
+                System.out.println("You attacked " + game.array.theMonster() + " and dealt " + a1 + " damage."); 
+                System.out.println("You were attacked and lost " + a2 + " HP ");   
                 }
             }
               if (!player1.isAlive() && (!game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getMonster().isAlive())) { 
                 System.out.println("You have both been killed"); 
                 game.gameOver = true; 
-                break;
             }
             else if (!game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getMonster().isAlive()) { 
                 System.out.println("Somehow even with your limited memory, you slained the " + game.array.theMonster()); 

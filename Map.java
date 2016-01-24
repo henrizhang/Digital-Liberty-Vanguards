@@ -8,9 +8,9 @@ public class Map {
     private int _playerRow;
     private int _playerColumn;
     private String playerLocation;
-    private Item item; 
-    private Key key; 
-    private Monster gob; 
+    private Item item;  
+    private Monster grim;
+    private Monster zomb; 
     private int stopMap = 0; 
 
     //default constructor intializes a
@@ -33,10 +33,12 @@ public class Map {
 	     _playerRow=rowPlayer;
 	     _playerColumn=columnPlayer;
 	     playerLocation = rowPlayer + "," + columnPlayer; //storing the starting point of the player marked as "0"
-         key = new Key();
-         gob = new Monster(); 
-         map[0][0].addItem(key); 
-         map[0][1].addMonster(gob); 
+         item = new Key();
+         grim = new GrimReaper(); 
+         zomb = new Zombie(); 
+         map[0][0].addItem(item); 
+         map[0][1].addMonster(grim); 
+         map[3][4].addMonster(zomb);
          }
     
     
@@ -103,7 +105,7 @@ public class Map {
            }
            if (map[_playerRow][_playerColumn].hasItem()) {
                stopMap = 1; 
-          System.out.println("You found a " + theItem() + "!" + " You can now..");
+          System.out.println("You found a " + theItem() + "! It's now in your inventory. You can now..");
         }
         
         else if (map[_playerRow][_playerColumn].hasMonster()) {
