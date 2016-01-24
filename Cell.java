@@ -15,7 +15,7 @@ public class Cell {
     
     public Cell() { 
         _name = "X"; 
-        _item = null; 
+    //    _item = null; 
         
         
       //default Cell constructor
@@ -36,28 +36,15 @@ public class Cell {
     }
     //accessor for enterText
     
-    public void addItem(String name) { 
-        Item a = new Item(name); 
-        _item = a;
+    public void addItem(Item name) { 
+        _item = name ;
     
     }
         
     public boolean hasItem() { 
         return (!(_item==null));
         }
-    
-    
-//    public Cell(String enterText) {
-    
-        
-  //      _enterText = enterText;
-       /**
-        _enemy = enemy; 
-        _item = item; 
-        _gameName = gm; 
-        */
-        
-        
+       
     public boolean hasPlayer() {
         boolean foo = false; 
         if (_name == "O") 

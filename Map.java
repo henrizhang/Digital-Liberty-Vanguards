@@ -9,7 +9,8 @@ public class Map {
     private int _playerColumn;
     private String playerLocation;
     private Item item; 
-    public int stopMap = 0; 
+    private Key key; 
+    private int stopMap = 0; 
 
     //default constructor intializes a DEFAULT_SIZE*DEFAULT_SIZE map
     public Map() {
@@ -30,7 +31,8 @@ public class Map {
 	     _playerRow=rowPlayer;
 	     _playerColumn=columnPlayer;
 	     playerLocation = rowPlayer + "," + columnPlayer; //storing the starting point of the player marked as "0"
-         map[0][0].addItem("Key");
+         Key key=new Key("key","door");
+         map[0][0].addItem(key); 
          }
     
     
@@ -58,6 +60,10 @@ public class Map {
         return str; 
     }
     
+    public int getStopMap(){
+        return stopMap;
+    }
+    
     ///need to add the null and out of bounds cases 
     ///if incorrect directions >> output some correcting words 
        public void movePlayer (String direction) { 
@@ -65,7 +71,7 @@ public class Map {
            //glooks not commenting this
            
         
-           if (direction.equals("i")) {
+           if (direction.equals("w")) {
               
               _playerRow = (Integer.parseInt(playerLocation.substring(0,1)));
               _playerRow -= 1;
@@ -73,21 +79,21 @@ public class Map {
               playerLocation = _playerRow + "," + _playerColumn; 
            }
            
-           if (direction.equals("k")) {
+           if (direction.equals("s")) {
                _playerRow = (Integer.parseInt(playerLocation.substring(0,1)));
                _playerRow+=1;
                _playerColumn = (Integer.parseInt(playerLocation.substring(2))); 
               playerLocation = _playerRow + "," + _playerColumn; 
            }
            
-           if (direction.equals("j")) { 
+           if (direction.equals("a")) { 
                _playerRow = (Integer.parseInt(playerLocation.substring(0,1)));
                _playerColumn = (Integer.parseInt(playerLocation.substring(2))); 
                _playerColumn -= 1; 
               playerLocation = _playerRow + "," + _playerColumn; 
            }
            
-           if (direction.equals("l")) { 
+           if (direction.equals("d")) { 
                _playerRow = (Integer.parseInt(playerLocation.substring(0,1)));
                _playerColumn = (Integer.parseInt(playerLocation.substring(2))); 
                _playerColumn+=1;
@@ -99,7 +105,7 @@ public class Map {
         }
         else stopMap = 0; 
 }
-    
+ /******
     public String theItem() { 
         String foo = "";
         if (map[_playerRow][_playerColumn].hasItem())  {
@@ -107,7 +113,12 @@ public class Map {
         foo += map[_playerRow][_playerColumn]._item.toString(); }
         return foo;
     }
-    
+*****/ 
+
+    public Object theItem() { 
+            return map[_playerRow][_playerColumn]._item; 
+    }
+        
     public int getPlayerColumn(){
         return this._playerColumn;
     }
@@ -134,8 +145,13 @@ public class Map {
 
     public static void main(String[] args) {
         Map a = new Map(); 
+        Key key = new Key("Key", "Open"); 
         System.out.println(a);
         System.out.println(a.playerLocation);
+        System.out.println(a.theItem());
+        System.out.println(a.getPlayerColumn());
+        System.out.println(a.getPlayerRow());
+    
  //       System.out.println(a.theItem()); 
  //       System.out.println(a.Where());
        

@@ -6,11 +6,12 @@ public class GamePlay {
     private int numMoves; //number of times player has moved in the game
     private Game Gameswag;
     //game or string that represents a game
+    private boolean canContinue;
+    //if a player has entered the right string to continue the game
 public GamePlay() { 
     gameOver = false; 
-    numMoves=0;
+    numMoves=-1;
     array=new Map();
-    
 }
 
 public String newGame() {
@@ -22,34 +23,63 @@ public String newGame() {
 
 
 public static void main (String [] args) { 
+    
     Player player1 = new Player();
     GamePlay game = new GamePlay(); 
-    while (!(game.gameOver)){
-        if (game.numMoves==0){
-            System.out.println("You have began a new game.");
-        }
+    while (!(game.gameOver)) {
+        //FIRST ITERATION OF THE LOOP IS BEFORE THE INITIAL MOVEMENT OF THE PLAYER
+        if (game.numMoves==-1) {
+            System.out.println("You have began a new game. (Press Space+enter to continue...)");
+            String input="sike";
+            while (!(input.equals(" "))){ 
+                input=Keyboard.readString();
+                //need to enter space to continue
+            }
+            
+            System.out.println("You wake up in a strange shack. Your head aches. There is a smell of burning bacon somewhere. (Press Space+enter to continue...)");
+            input= "sike";//resetting input
+            
+            while (!(input.equals(" "))) {
+                input=Keyboard.readString();
+                //need to enter space to continue
+            }
+            System.out.println("type 'help' for further aid. w, a, s, d to move. type inventory to open inventory. (Press Space+enter to continue)");
+            input="sike";//resetting input
+            while (!(input.equals(" "))) {
+                input=Keyboard.readString();
+                //need to enter space to continue
+            }
+            game.numMoves+=1;
+            continue;
+                // FIRST ITERATION ENDS HERE
+               
+            }
+      
         //Initial message upon starting a new game
-        if (!(game.array.stopMap == 1)){
+        if (!(game.array.getStopMap() == 1)) {
         System.out.println(game.array);
         System.out.println("This is the map. Your location is marked by O. Where would you like to go?");
         } 
-        String userCommand=Keyboard.readString();
-        if (game.array.map[game.array.getPlayerColumn()][game.array.getPlayerColumn()].hasItem()) { 
-            //those vars are private though so you cant // why do they have to be private 
-            player1.add(game.array.theItem());
-        }
-            
+        //ORDER OF THE COMMAND/RESULT MATTERS!!!
+        String userCommand=Keyboard.readString(); 
         
         if (userCommand.equals("inventory")) {
          //   player1._inventory.add("Key");
-            System.out.println(player1._inventory);     
-            game.array.stopMap = 1;
+            System.out.println(player1.stringifyInventory());     
+      //      game.array.stopMap = 1;  [private access] 
         }
     //    else if (userCommand.equals)
         
         try {
         game.array.movePlayer(userCommand); 
+        if (game.array.map[game.array.getPlayerColumn()][game.array.getPlayerColumn()].hasItem()) {
+            System.out.println(game.array.theItem()); 
+            System.out.println(game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasItem());
+            player1.add(game.array.theItem());
+            
         }
+        }
+        
         catch(ArrayIndexOutOfBoundsException e){
             System.out.println("You cannot go here");
             System.out.println(game.array);
@@ -58,11 +88,12 @@ public static void main (String [] args) {
         game.numMoves++;
         
     }
-    System.out.println("");
+    System.out.println();
+}
     
 }
 
-}
+
     
         
     

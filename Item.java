@@ -1,17 +1,14 @@
-public class Item {
+public abstract class Item {
     
-    private String _name;
+    protected String _name;
     
- //   public Item() {}
-    
-    public Item (String name) {
-        _name = name;
+    public Item () {
+        _name = "Item"; 
     }
    
     public String toString() {
     return _name; 
     }
-    
 }
     
 
