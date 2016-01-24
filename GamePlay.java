@@ -80,7 +80,7 @@ public static void main (String [] args) {
             game.array.movePlayer(userCommand); 
                 if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasItem()) {
                      if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasPotion()) { 
-                    player1.addHealth((int) (Math.random() * 13 + 20);
+                    player1.addHealth((int) (Math.random() * 13 + 21));
                     System.out.println("Your health is now " + player1.getHealth());
                     game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].removeItem(game.array.theItem());
                     System.out.println("Press space+enter to return to the map");
