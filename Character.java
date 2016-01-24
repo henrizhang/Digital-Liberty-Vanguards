@@ -15,6 +15,8 @@ public abstract class Character {
         _defense=defense;
         _attack=attack;
     }
+    
+    
     /**
     public int setHealth(int new )
 }

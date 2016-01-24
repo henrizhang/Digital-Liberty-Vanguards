@@ -3,6 +3,7 @@ public class Cell {
     private String _enterText;
     private boolean hasPlayer; 
     private Item _item; 
+    private Monster _monsta; 
     //instance variables of Cell
     
 
@@ -63,6 +64,22 @@ public class Cell {
     public Item getItem(){
         return _item;
     }
+    
+    public void addMonster(Monster mon) { 
+        _monsta = mon; 
+    } 
+
+    public void removeMonster(Monster mon) { 
+        _monsta = null; 
+    }
+    
+    public boolean hasMonster() { 
+        return (!(_monsta==null)); 
+    }
+    
+    public Monster getMonster() { 
+        return _monsta; 
+    } 
 
     /***
     public void setEnemy(Enemy enemy) { 

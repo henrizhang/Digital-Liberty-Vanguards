@@ -10,9 +10,11 @@ public class Map {
     private String playerLocation;
     private Item item; 
     private Key key; 
+    private Monster gob; 
     private int stopMap = 0; 
 
-    //default constructor intializes a DEFAULT_SIZE*DEFAULT_SIZE map
+    //default constructor intializes a
+   // DEFAULT_SIZE*DEFAULT_SIZE map
     public Map() {
 	    map = new Cell[DEFAULT_SIZE][DEFAULT_SIZE];
 	     for (int i = 0; i < map.length ; i++) {
@@ -31,8 +33,10 @@ public class Map {
 	     _playerRow=rowPlayer;
 	     _playerColumn=columnPlayer;
 	     playerLocation = rowPlayer + "," + columnPlayer; //storing the starting point of the player marked as "0"
-         key=new Key();
+         key = new Key();
+         gob = new Monster(); 
          map[0][0].addItem(key); 
+         map[0][1].addMonster(gob); 
          }
     
     
@@ -67,9 +71,7 @@ public class Map {
     ///need to add the null and out of bounds cases 
     ///if incorrect directions >> output some correcting words 
        public void movePlayer (String direction) { 
-        //   **== or .equals -- its not the same object right
-           //glooks not commenting this
-           
+
         
            if (direction.equals("w")) {
               
@@ -101,10 +103,16 @@ public class Map {
            }
            if (map[_playerRow][_playerColumn].hasItem()) {
                stopMap = 1; 
-        System.out.println("You found a " + theItem() + "!" + " You can now..");
+          System.out.println("You found a " + theItem() + "!" + " You can now..");
+        }
+        
+        else if (map[_playerRow][_playerColumn].hasMonster()) {
+            stopMap = 1; 
+            System.out.println("A " + theMonster() + " has appeared. Prepare to FIGHT"); 
         }
         else stopMap = 0; 
-}
+       }
+
  /******
     public String theItem() { 
         String foo = "";
@@ -117,6 +125,9 @@ public class Map {
 
     public Item theItem() { 
             return map[_playerRow][_playerColumn].getItem(); 
+    }
+    public Monster theMonster() { 
+        return map[_playerRow][_playerColumn].getMonster(); 
     }
         
     public int getPlayerColumn(){
