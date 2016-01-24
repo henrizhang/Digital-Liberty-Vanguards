@@ -1,8 +1,8 @@
 public class Cell { 
-    public String _name; 
+    private String _name; 
     private String _enterText;
     private boolean hasPlayer; 
-    public Item _item; 
+    private Item _item; 
     //instance variables of Cell
     
 
@@ -16,8 +16,6 @@ public class Cell {
     public Cell() { 
         _name = "X"; 
     //    _item = null; 
-        
-        
       //default Cell constructor
     }
     
@@ -61,6 +59,10 @@ public class Cell {
         String str = _name; 
         return str; 
         }
+        
+    public Item getItem(){
+        return _item;
+    }
 
     /***
     public void setEnemy(Enemy enemy) { 

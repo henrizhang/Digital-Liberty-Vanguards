@@ -25,13 +25,13 @@ public class Map {
 	     }
 	     
 	     Cell a = new Cell("O");
-	     int rowPlayer=(int)(Math.random()*4); // row of player's starting point 
-	     int columnPlayer=(int)(Math.random()*4); // column of player's starting point
+	     int rowPlayer=2; // row of player's starting point 
+	     int columnPlayer=2; // column of player's starting point
 	     map[rowPlayer][columnPlayer] = a; 
 	     _playerRow=rowPlayer;
 	     _playerColumn=columnPlayer;
 	     playerLocation = rowPlayer + "," + columnPlayer; //storing the starting point of the player marked as "0"
-         Key key=new Key("key","door");
+         key=new Key();
          map[0][0].addItem(key); 
          }
     
@@ -101,7 +101,7 @@ public class Map {
            }
            if (map[_playerRow][_playerColumn].hasItem()) {
                stopMap = 1; 
-        System.out.println("You found a " + theItem() + "!" + " But, what's it for?"); 
+        System.out.println("You found a " + theItem() + "!" + " You can now..");
         }
         else stopMap = 0; 
 }
@@ -116,7 +116,7 @@ public class Map {
 *****/ 
 
     public Item theItem() { 
-            return map[_playerRow][_playerColumn]._item; 
+            return map[_playerRow][_playerColumn].getItem(); 
     }
         
     public int getPlayerColumn(){
@@ -145,7 +145,7 @@ public class Map {
 
     public static void main(String[] args) {
         Map a = new Map(); 
-        Key key = new Key("Key", "Open"); 
+    //    Key key = new Key("Key", "Open"); 
         System.out.println(a);
         System.out.println(a.playerLocation);
         System.out.println(a.theItem());

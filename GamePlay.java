@@ -67,16 +67,20 @@ public static void main (String [] args) {
          //   player1._inventory.add("Key");
             System.out.println(player1.stringifyInventory());     
       //      game.array.stopMap = 1;  [private access] 
+            System.out.println("(Press Space+enter to continue)");
+            String input2="sike";
+            while(!(input2.equals(" "))){
+                input2=Keyboard.readString();    
+            }
         }
     //    else if (userCommand.equals)
         
         try {
-        game.array.movePlayer(userCommand); 
-        if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasItem()) {
-            player1.add(game.array.theItem());
-            game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].removeItem(game.array.theItem());
-            
-        }
+            game.array.movePlayer(userCommand); 
+            if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasItem()) {
+                player1.add(game.array.theItem());
+                game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].removeItem(game.array.theItem());
+            }
         }
         
         catch(ArrayIndexOutOfBoundsException e){
