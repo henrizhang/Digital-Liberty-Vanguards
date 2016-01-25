@@ -128,27 +128,6 @@ public class Cell {
     public void removeGame(Slots slot) {
         _slot = null; 
     }
-
-    /***
-    public void setEnemy(Enemy enemy) { 
-      //  _enemy = enemy;
-    }
-
-    public void setItem(Item item, String gm) { 
-        _enterText = enterText;
-        _enemy = enemy; 
-        _item = item; 
-        _gameName = gm;
-    }
-    
-    public void change(String enterText, Enemy enemy, Item item, String gm) { 
-        _enterText = enterText;
-        _enemy = enemy; 
-        _item = item; 
-        _gameName = gm;
-    }
-    */
-   //dont use null, use string 
 }
 
 

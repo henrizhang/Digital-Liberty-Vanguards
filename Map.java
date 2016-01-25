@@ -280,22 +280,6 @@ public class Map {
         }
         else stopMap = 0; 
        }
-       
-       
-      
-    
-               
-               
-
- /******
-    public String theItem() { 
-        String foo = "";
-        if (map[_playerRow][_playerColumn].hasItem())  {
-        Cell a = new Cell();
-        foo += map[_playerRow][_playerColumn]._item.toString(); }
-        return foo;
-    }
-*****/ 
 
     public Item theItem() { 
             return map[_playerRow][_playerColumn].getItem(); 
@@ -319,33 +303,5 @@ public class Map {
     public void changeStop(int c) { 
         stopMap = c; 
     }
-        
-    
-/*** add mutator to Cell so u can change the Cells appearance (whats strung and seen on the map)
-        when the player enters that Cell. 
-        
-        ****/
 
-/**move player 
-    -- idea : if we keep the store Cell aka (String where) >> then take the substrings parse to integer 
-    and then do like map[whatever the substring is][whatever substring is that player is at] and do like +1 at the row 
-    for when its  right arrow, left arrow or maybe even letters ? like JIKL instead. 
-    ** will need to implement out of bounds , and nulls, empties. 
-    
- 
-    
-    
-**/// 
-        
-
-    public static void main(String[] args) {
-        Map a = new Map(); 
-    //    Key key = new Key("Key", "Open"); 
-        System.out.println(a.map[0][0].getEnterText());
-    
- //       System.out.println(a.theItem()); 
- //       System.out.println(a.Where());
-       
-  
-    }
 }

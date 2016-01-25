@@ -88,7 +88,7 @@ public static void main (String [] args) {
                 input=Keyboard.readString();
                 //need to enter space to continue
             }
-            System.out.println("type inventory to open inventory. press space+enter to return to the map. (Press Space+enter to continue)");
+            System.out.println("type inventory to open inventory. type stats to check your stats. press space+enter to return to the map. (Press Space+enter to continue)");
             input="sike";//resetting input
             while (!(input.equals(" "))) {
                 input=Keyboard.readString();
@@ -149,10 +149,10 @@ public static void main (String [] args) {
                 else if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasWeapon()) { 
                     game.player1.add(game.array.theItem()); 
                     if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getItem().which() == true ) {
-                        game.player1.addStr((int)(Math.random()*6)); 
+                        game.player1.addStr((int)(Math.random()*6+2)); 
                         game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].removeItem(game.array.theItem());
                     }
-                    else game.player1.addDef((int)(Math.random()*6));
+                    else game.player1.addDef((int)(Math.random()*6+2));
                     game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].removeItem(game.array.theItem());
                 }
                 else if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasBooster()) { 
@@ -175,9 +175,13 @@ public static void main (String [] args) {
         
             
             else if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasMonster()) { 
+                boolean finalFight=false;
+                if ((game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getMonster()).equals("General Marius")){
+                    finalFight=true;
+                }
          //       System.out.println("Open inventory to see what you can use to fight");  //inventory doesn't open up -- what if we don't use weapons? 
                 System.out.println("A " + game.array.theMonster() + " has appeared.");
-                System.out.println("Press b+enter to fight. Type run+enter to escape and return to the map"); 
+                System.out.println("Press b+enter to fight. Type run+enter to escape and return to the map. Defeating a monster helps you gain strength."); 
                 while (game.player1.isAlive() && game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getMonster().isAlive()) {   
                 String command = Keyboard.readString(); 
                     if (command.equals("b")) { 
@@ -197,8 +201,13 @@ public static void main (String [] args) {
                     System.out.println("You have both been killed"); 
                     game.gameOver = true; 
                 }
+                
                 else if (!game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getMonster().isAlive()) { 
-                    System.out.println("Somehow even with your limited memory, you slained the " + game.array.theMonster()); 
+                    System.out.println("Somehow even with your limited memory, you slained the " + game.array.theMonster());
+                    if (finalFight){
+                        System.out.println("Having defeated the greatest resister of your brutal scourge, you are now an unstoppable monster. Congratulations. You have won the game.");
+                    }
+                    game.player1.addStr((int)(Math.random() * 5 + 1));
                     game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].removeMonster(game.array.theMonster());
                     System.out.println("Press space+enter to return to the map"); 
                 } 
@@ -241,13 +250,13 @@ public static void main (String [] args) {
                  System.out.println("This key is useless");
              }   
              else if (play.theWin() instanceof Booster) { 
-                  game.player1.addStr((int)(Math.random() * 6));
-                  game.player1.addDef((int)(Math.random() * 6));
+                  game.player1.addStr((int)(Math.random() * 6 + 1));
+                  game.player1.addDef((int)(Math.random() * 6 + 1));
                   System.out.println("Your strength and defense have been increased");
                
              }
              else if (play.theWin() instanceof Drain) { 
-                 game.player1.decBoth((int)(Math.random() * 6));
+                 game.player1.decBoth((int)(Math.random() * 6 + 1));
                  System.out.println("Your strength and defense have been lowered"); 
                  
              }
