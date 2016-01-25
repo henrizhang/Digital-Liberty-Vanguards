@@ -7,13 +7,14 @@ public class Map {
     "The enormous steepness of the slope of the mountain to the north prevents you from going further up.","The enormous steepness of the slope of the mountain to the north prevents you from going further up.", "The enormous steepness of the slope of the mountain to the north prevents you from going further up.",
     "Empty vials and broken machinery are scattered across the end of this room.","Inactive automatons line across the room. ","This appears to be where the owner of the facility stays.", 
     "You have reached the Western end of the desert. Beyond this, a raging sandstorm blocks your path.", "The Great Sand Dunes stretch on.", "The temperature is hot. The sun is scorching. You seem to be near a desert.", 
-    "Rocks are everywhere. The ", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "",""};
+    "The area becomes rocky. You seem to be near a mountain", "You are clearly in the ranges now. The jagged path of rock seems overwhelming to climb.","You near the Eastern end of the mountain ranges. The long hills serve almost as a barrier of some sort...", 
+    "The facility has a machine for... robot manufacturing? But why?", "You open the security door with the Skeleton Key. ","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "",""};
    
     public Cell[][] map;
     private int _playerRow;
     private int _playerColumn;
     private String playerLocation;
-    private Item item, pot, weapon, weapon2;  
+    private Item item, pot, weapon, weapon2, boost;  
     private Monster grim, zomb, joke, kil;
     private Slots slot; 
     private int stopMap = 0; 
@@ -34,7 +35,6 @@ public class Map {
                 map[i][j] = k; // idea : make an array of string of diff location names + randomly populate the arrays? 
             }
 	     }
-            Cell locked = new Cell("-"); 
             map[3][3] = locked; 
 	     
 	     Cell a = new Cell("O");
@@ -57,6 +57,7 @@ public class Map {
          kil = new KilGrave();
          weapon = new Weapon(); 
          weapon2 = new Weapon(); 
+         boosts = new Booster(); 
          map[0][0].addItem(item); 
          map[0][1].addMonster(grim); 
          map[3][4].addMonster(zomb);
@@ -65,7 +66,8 @@ public class Map {
          map[4][2].addGame(slot); 
          map[6][6].addMonster(kil);
          map[5][7].addItem(weapon); 
-         map[6][5].addItem(weapon2); 
+         map[6][5].addItem(weapon2);
+         map[8][8].addItem(boost); 
          }
 
          
@@ -135,10 +137,16 @@ public class Map {
         
            if ((map[_playerRow][_playerColumn].hasItem()) && (map[_playerRow][_playerColumn].hasPotion())) { 
                  System.out.println("You found a " + theItem() + " ! " + theItem().getPurpose());  
-               stopMap = 1; }
+               stopMap = 1; 
+               }
               else if ((map[_playerRow][_playerColumn].hasItem()) && (map[_playerRow][_playerColumn].hasWeapon())) { 
                    System.out.println("You found a " + theItem() + " ! " + theItem().getPurpose()); 
-                   stopMap = 1; }
+                   stopMap = 1; 
+                   }
+                   else if ((map[_playerRow][_playerColumn].hasItem()) && (map[_playerRow][_playerColumn].hasBooster())) { 
+                   System.out.println("You found a " + theItem() + " ! " + theItem().getPurpose()); 
+                   stopMap = 1; 
+                   }
                else if (map[_playerRow][_playerColumn].hasItem()) {
           System.out.println("You found a " + theItem() + " ! It's now in your inventory. You can now..");
           stopMap = 1; 

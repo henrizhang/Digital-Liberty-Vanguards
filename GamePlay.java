@@ -108,17 +108,14 @@ public static void main (String [] args) {
             }
             input2="sike";
         }
-        
-    //    else if (userCommand.equals)
-        
-        
+         
         
         if (game.canGoHere(userCommand)){
             game.array.movePlayer(userCommand); 
             System.out.println(game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getEnterText());
             game.array.changeStop(1);
             
-             if (userCommand.equals("map")) { 
+             if (userCommand.equals(" ")) { 
             System.out.println(game.array);
             game.array.changeStop(0); 
         }
@@ -173,7 +170,7 @@ public static void main (String [] args) {
                 else if (!game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getMonster().isAlive()) { 
                     System.out.println("Somehow even with your limited memory, you slained the " + game.array.theMonster()); 
                     game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].removeMonster(game.array.theMonster());
-                    System.out.println("Press anykey+enter to return to the map"); 
+                    System.out.println("Press map+enter to return to the map"); 
                 } 
             else if (!player1.isAlive()) { 
                 System.out.println("You failed. " + game.array.theMonster() + " has killed you."); 

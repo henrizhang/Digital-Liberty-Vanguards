@@ -54,11 +54,6 @@ public class Cell {
         if (_item instanceof Potion) {
             poo = true; 
         }
-        /**
-         if (_item._name.equals("Potion"))
-         poo = true;
-         
-        **/ 
          return poo;
     }
     
@@ -71,6 +66,13 @@ public class Cell {
         return too;
     }
     
+    public boolean hasBooster() {
+        boolean moo = false; 
+        if (_item instanceof Booster) { 
+            moo = true; 
+        }
+        return moo; 
+    }
        
     public boolean hasPlayer() {
         boolean foo = false; 
