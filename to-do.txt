@@ -3,22 +3,13 @@ APCS1 - pd 5
 
 
 TO-DO :  
-[/] Main Driver file (set up to test) [1hr+]
-[O] Printing the map: which is made up of cells: can be locked in unaccessible - how should be implement that
+[O] Main Driver file (set up to test) [1hr+]
+[O] Printing the map: which is made up of cells: can be locked in unaccessible -
 [O] Navigating through the map: showing player location - upon entering - there will be text indicating what is inside. 
-[/] Cells contain items, bosses, monsters, mini games: for clues -- 
-[X] Inventory : hold items : ArrayList<Object> : when and where should be output the inventory ? 
-[/] Characters -- Players and Bosses : health points, damage, attacks :
-[X] Mini Games -- slot machine, matching game [1 hr++] : so how should we get the game to run upon entering cell?
-[/] Items: clues,notes,keys,weapons : does it automatically add to the inventory?  
+[O] Cells contain items, bosses, monsters, mini games: for clues -- 
+[O] Inventory : hold items : ArrayList<Object> : 
+[O] Characters -- Players and Bosses : health points, damage, attacks :
+[O] Mini Games -- slot machine
+[O] Items: keys,weapons,boosts,drains :
 
-Questions to address : 
--upon entering: should we use ASCII to show how the place may look like ? 
--will the map size be constant 
--will the map have the same items each time you run the game  
--address the null and outofbounds cases 
-Last priorities: 
--should we do save game?
--What's the story line exactly? 
--add another minigame
-*mostly work on this together simultaneously 
+

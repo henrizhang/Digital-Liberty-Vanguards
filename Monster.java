@@ -1,4 +1,5 @@
 public class Monster extends Char{  
+    
     public Monster(String name) {
         _name = name; 
         _health=30;
