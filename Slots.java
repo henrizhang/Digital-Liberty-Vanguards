@@ -10,7 +10,7 @@ public class Slots extends Game {
 		new Potion(), new Potion(), new Potion(), 
 		new Clue(), new Clue(), new Clue(),
 		new Booster(),new Booster(),new Booster(),
-		new Drain(),new Drain(),new Drain() };
+		new Drain(), new Drain(), new Drain() };
   private Item[] _items; //to be init'd by each instance
 
 
@@ -68,8 +68,6 @@ public class Slots extends Game {
  
 	}
     }
-
-
 
     /*=====================================
       boolean jackpot() -- checks for a winning combo

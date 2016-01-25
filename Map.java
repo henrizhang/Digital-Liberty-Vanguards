@@ -48,7 +48,7 @@ public class Map {
     private int _playerColumn;
     private String playerLocation;
     private Item item, pot, weapon, weapon2, boost, drain;   
-    private Monster grim, scorp, joke, kil;
+    private Monster mountain, desert, desert2, desert3, desert4, desert5, desert6, joke, kil, finalboss;
     private Slots slot; 
     private int stopMap = 0; 
     
@@ -82,8 +82,13 @@ public class Map {
 	     
 	     
          item = new Key();
-         grim = new GrimReaper(); 
-         scorp = new Scorpion(); 
+         finalboss=new FinalBoss();
+         mountain = new Mountain(); 
+         desert = new Desert();
+         desert2 = new Desert();
+         desert3 = new Desert();
+         desert4 = new Desert(); 
+         desert5 = new Desert(); 
          joke = new Joker(); 
          pot = new Potion();
          slot = new Slots(); 
@@ -93,16 +98,21 @@ public class Map {
          boost = new Booster(); 
          drain = new Drain(); 
          map[0][0].addItem(item); 
-         map[0][1].addMonster(grim); 
-         map[3][4].addMonster(scorp);
-         map[2][2].addMonster(joke);
-         map[1][3].addItem(pot);
+         map[0][1].addMonster(desert);
+         map[0][3].addMonster(desert2); 
+         map[0][4].addMonster(desert3);
+         map[1][4].addMonster(desert4); 
+         map[1][0].addMonster(desert5); 
+         map[3][5].addMonster(mountain);
+         map[2][2].addMonster(desert6);
+         map[4][3].addItem(pot);
          map[4][2].addGame(slot); 
          map[6][6].addMonster(kil);
          map[5][7].addItem(weapon); 
          map[6][5].addItem(weapon2);
          map[8][8].addItem(boost); 
          map[1][6].addItem(drain); 
+         map[0][8].addMonster(finalboss);
          }
 
          

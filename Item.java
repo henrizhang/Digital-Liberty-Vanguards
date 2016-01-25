@@ -26,7 +26,7 @@ public abstract class Item {
      }
      
      public int random() { 
-         return (int)(Math.random() * 7);
+         return (int)(Math.random() * 6);
     
 }
 }

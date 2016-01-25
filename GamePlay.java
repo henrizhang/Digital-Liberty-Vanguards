@@ -22,6 +22,9 @@ public String newGame() {
 
 public boolean canGoHere(String direction){
     if (direction.equals("w")) {
+       /* if array.getPlayerRow(){
+            
+        }*/
         if ((this.array.getPlayerRow()-1)<0){
             return false;
         }
@@ -41,6 +44,7 @@ public boolean canGoHere(String direction){
             return false;
         }
     }
+    
     return true;
     
 }
@@ -191,7 +195,7 @@ public static void main (String [] args) {
             play.spinOnce(); 
             System.out.println("Woah, a weird looking slot machine stands on the side. Tiny words flash on the screen: ");
             System.out.println( "play state:\t" + play );
-            System.out.println("Type spin to keep spinning for a win. Press space+enter to return to the map"); 
+            System.out.println("Type spin to keep spinning for a winning. Press space+enter to return to the map"); 
             if (userCommand.equals("spin")) { 
             	while( play.jackpot() == false ) {
 	    System.out.println( "Your spin..." + "\t" + play);
@@ -206,7 +210,7 @@ public static void main (String [] args) {
 	System.out.println( "Your spin..." + "\t" + play );
 	System.out.println( "JACKPOT!\n" );
 	
-             game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].removeGame(game.array.theGame());
+    //         game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].removeGame(game.array.theGame());
              System.out.println("You won a " + play.theWin() + "!");
              
              if (play.theWin() instanceof Potion) {
@@ -220,12 +224,15 @@ public static void main (String [] args) {
                  System.out.println("This key is useless");
              }   
              else if (play.theWin() instanceof Booster) { 
-                  player1.addStr(game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getItem().random());
-                  player1.addDef(game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getItem().random());
+                  player1.addStr((int)(Math.random() * 6));
+                  player1.addDef((int)(Math.random() * 6));
+                  System.out.println("Your strength and defense have been increased");
+               
              }
              else if (play.theWin() instanceof Drain) { 
-                 player1.decBoth(game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getItem().random());
-                 game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].removeItem(game.array.theItem());
+                 player1.decBoth((int)(Math.random() * 6));
+                 System.out.println("Your strength and defense have been lowered"); 
+                 
              }
                  
                  
