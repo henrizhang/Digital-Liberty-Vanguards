@@ -88,7 +88,7 @@ public static void main (String [] args) {
                 input=Keyboard.readString();
                 //need to enter space to continue
             }
-            System.out.println("type inventory to open inventory. type stats to check your stats. press space+enter to return to the map. (Press Space+enter to continue)");
+            System.out.println("type [w,a,s,d]+enter to navigate. type inventory to open inventory. type stats to check your stats. press space+enter to return to the map. (Press Space+enter to continue)");
             input="sike";//resetting input
             while (!(input.equals(" "))) {
                 input=Keyboard.readString();
@@ -221,7 +221,7 @@ public static void main (String [] args) {
             play.spinOnce(); 
             System.out.println("Woah, a weird looking slot machine stands on the side. Tiny words flash on the screen: ");
             System.out.println( "play state:\t" + play );
-            System.out.println("Type spin to keep spinning for a winning. Press space+enter to return to the map"); 
+            System.out.println("Type spin to keep spinning for a winning. Press [w,a,s,d]+enter to leave machine"); 
             if (userCommand.equals("spin")) { 
             	while( play.jackpot() == false ) {
 	    System.out.println( "Your spin..." + "\t" + play);

@@ -100,7 +100,7 @@ public class Map {
     private Item item, pot, weapon, weapon2, boost, drain;   
     private Monster mountain,mountain2,mountain3,
     desert, desert2, desert3, desert4, desert5, desert6, 
-    soldier, soldier2, soldier3, soldier4, soldier5, soldier6, soldier7,soldier8, 
+    soldier, soldier2, soldier3, soldier4, soldier5, soldier6, soldier7, soldier8, soldier9, soldier10, soldier11,
     robo, robo2, robo3,
     kil, finalboss;
     private Slots slot; 
@@ -147,6 +147,17 @@ public class Map {
          desert5 = new Desert(); 
          desert6 = new Desert(); 
          soldier = new Soldiers();
+         soldier2 = new Soldiers();
+         soldier3 = new Soldiers();
+         soldier4 = new Soldiers();
+         soldier5 = new Soldiers();
+         soldier6 = new Soldiers();
+         soldier7 = new Soldiers();
+         soldier8 = new Soldiers();
+         soldier9 = new Soldiers();
+         soldier10 = new Soldiers();
+         soldier11 = new Soldiers();
+         
          pot = new Potion();
          slot = new Slots(); 
          kil = new KilGrave();
@@ -172,23 +183,23 @@ public class Map {
          map[2][8].addMonster(soldier); 
          map[3][3].addMonster(mountain3); 
          map[3][5].addMonster(mountain);
-         map[3][8].addMonster(soldier);
+         map[3][8].addMonster(soldier2);
          map[4][2].addGame(slot); 
          map[4][3].addItem(pot);
-         map[4][7].addMonster(soldier); 
-         map[5][1].addMonster(soldier); 
-         map[5][3].addMonster(soldier);
-         map[5][6].addMonster(soldier);
+         map[4][7].addMonster(soldier3); 
+         map[5][1].addMonster(soldier4); 
+         map[5][3].addMonster(soldier5);
+         map[5][6].addMonster(soldier6);
          map[5][7].addItem(weapon); 
-         map[6][4].addMonster(soldier);
+         map[6][4].addMonster(soldier7);
          map[6][5].addItem(weapon2);
          map[6][6].addMonster(kil);
-         map[7][2].addMonster(soldier);
+         map[7][2].addMonster(soldier8);
          map[7][4].addItem(pot);
          map[7][6].addItem(drain);
-         map[7][7].addMonster(soldier);
-         map[8][2].addMonster(soldier);
-         map[8][5].addMonster(soldier);
+         map[7][7].addMonster(soldier9);
+         map[8][2].addMonster(soldier10);
+         map[8][5].addMonster(soldier11);
          map[8][8].addItem(boost);
     
          }
