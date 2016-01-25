@@ -8,7 +8,8 @@ public class Map {
     "Empty vials and broken machinery are scattered across the end of this room.","Inactive automatons line across the room. ","This appears to be where the owner of the facility stays.", 
     "You have reached the Western end of the desert. Beyond this, a raging sandstorm blocks your path.", "The Great Sand Dunes stretch on.", "The temperature is hot. The sun is scorching. You seem to be near a desert.", 
     "The area becomes rocky. You seem to be near a mountain", "You are clearly in the ranges now. The jagged path of rock seems overwhelming to climb.","You near the Eastern end of the mountain ranges. The long hills serve almost as a barrier of some sort...", 
-    "The facility has a machine for... robot manufacturing? But why?", "You open the security door with the Skeleton Key. ","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "",""};
+    "The facility has a machine for... robot manufacturing? But why?", "You have opened the security door with the Skeleton Key. Inside it is a strange factory.","A library of research documents and notes can be seen here.",
+    "", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "",""};
    
     public Cell[][] map;
     private int _playerRow;
@@ -35,7 +36,7 @@ public class Map {
                 map[i][j] = k; // idea : make an array of string of diff location names + randomly populate the arrays? 
             }
 	     }
-            map[3][3] = locked; 
+            
 	     
 	     Cell a = new Cell("O");
 	     
@@ -47,7 +48,7 @@ public class Map {
 	     _playerColumn=columnPlayer;
 	     playerLocation = rowPlayer + "," + columnPlayer; //storing the starting point of the player marked as "0"
 	     
-	     // bad thing about not doing it random is you have to manually do this for every cell there is .
+	     
          item = new Key();
          grim = new GrimReaper(); 
          zomb = new Zombie(); 
@@ -57,7 +58,7 @@ public class Map {
          kil = new KilGrave();
          weapon = new Weapon(); 
          weapon2 = new Weapon(); 
-         boosts = new Booster(); 
+         boost = new Booster(); 
          map[0][0].addItem(item); 
          map[0][1].addMonster(grim); 
          map[3][4].addMonster(zomb);
@@ -135,15 +136,9 @@ public class Map {
               playerLocation = _playerRow + "," + _playerColumn; 
            }
         
-           if ((map[_playerRow][_playerColumn].hasItem()) && (map[_playerRow][_playerColumn].hasPotion())) { 
-                 System.out.println("You found a " + theItem() + " ! " + theItem().getPurpose());  
-               stopMap = 1; 
-               }
-              else if ((map[_playerRow][_playerColumn].hasItem()) && (map[_playerRow][_playerColumn].hasWeapon())) { 
-                   System.out.println("You found a " + theItem() + " ! " + theItem().getPurpose()); 
-                   stopMap = 1; 
-                   }
-                   else if ((map[_playerRow][_playerColumn].hasItem()) && (map[_playerRow][_playerColumn].hasBooster())) { 
+           if (((map[_playerRow][_playerColumn].hasItem()) && (map[_playerRow][_playerColumn].hasPotion())) ||
+                ((map[_playerRow][_playerColumn].hasItem()) && (map[_playerRow][_playerColumn].hasWeapon())) || 
+                 ((map[_playerRow][_playerColumn].hasItem()) && (map[_playerRow][_playerColumn].hasBooster()))) { 
                    System.out.println("You found a " + theItem() + " ! " + theItem().getPurpose()); 
                    stopMap = 1; 
                    }
