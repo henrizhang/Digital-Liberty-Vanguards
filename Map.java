@@ -5,7 +5,9 @@ public class Map {
     private final static String[] ENTERTEXT_LIST = {
     "You have reached the end of the desert. Beyond this, a raging sandstorm blocks your path.", "You have reached the end of the desert. Beyond this, a raging sandstorm blocks your path.", "You have reached the end of the desert. Beyond this, a raging sandstorm blocks your path.",
     "The enormous steepness of the slope of the mountain to the north prevents you from going further up.","The enormous steepness of the slope of the mountain to the north prevents you from going further up.", "The enormous steepness of the slope of the mountain to the north prevents you from going further up.",
-    "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "",""};
+    "Empty vials and broken machinery are scattered across the end of this room.","Inactive automatons line across the room. ","This appears to be where the owner of the facility stays.", 
+    "You have reached the Western end of the desert. Beyond this, a raging sandstorm blocks your path.", "The Great Sand Dunes stretch on.", "The temperature is hot. The sun is scorching. You seem to be near a desert.", 
+    "Rocks are everywhere. The ", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "",""};
    
     public Cell[][] map;
     private int _playerRow;
@@ -148,6 +150,7 @@ public class Map {
         }
         
         else if (map[_playerRow][_playerColumn].hasGame()) {
+            System.out.println("Woah. A weird looking slot machine.");
 
              stopMap = 1; 
         }
@@ -190,7 +193,7 @@ public class Map {
         return this.playerLocation;
     }
     public void changeStop(int c) { 
-        stopMap = 0; 
+        stopMap = c; 
     }
         
     

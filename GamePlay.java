@@ -108,6 +108,7 @@ public static void main (String [] args) {
             }
             input2="sike";
         }
+        
     //    else if (userCommand.equals)
         
         
@@ -115,8 +116,14 @@ public static void main (String [] args) {
         if (game.canGoHere(userCommand)){
             game.array.movePlayer(userCommand); 
             System.out.println(game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getEnterText());
+            game.array.changeStop(1);
+            
+             if (userCommand.equals("map")) { 
+            System.out.println(game.array);
+            game.array.changeStop(0); 
+        }
         
-            if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasItem()) {
+            else if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasItem()) {
                 if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasPotion()) { 
                     player1.addHealth(200-player1.getHealth());
                     System.out.println("Your health is now " + player1.getHealth());
