@@ -8,7 +8,7 @@ public class Map {
     private int _playerRow;
     private int _playerColumn;
     private String playerLocation;
-    private Item item, pot; 
+    private Item item, pot, weapon, weapon2;  
     private Monster grim, zomb, joke, kil;
     private Slots slot; 
     private int stopMap = 0; 
@@ -46,14 +46,18 @@ public class Map {
          joke = new Joker(); 
          pot = new Potion();
          slot = new Slots(); 
-         kil = new KilGrave(); 
+         kil = new KilGrave();
+         weapon = new Weapon(); 
+         weapon2 = new Weapon(); 
          map[0][0].addItem(item); 
          map[0][1].addMonster(grim); 
          map[3][4].addMonster(zomb);
          map[2][2].addMonster(joke);
          map[1][3].addItem(pot);
          map[4][2].addGame(slot); 
-         map[6][6].addMonster(kil); 
+         map[6][6].addMonster(kil);
+         map[5][7].addItem(weapon); 
+         map[6][5].addItem(weapon2); 
          }
 
          
@@ -122,10 +126,13 @@ public class Map {
            }
         
            if ((map[_playerRow][_playerColumn].hasItem()) && (map[_playerRow][_playerColumn].hasPotion())) { 
-                 System.out.println("You found a " + theItem() + "!" + theItem().getPurpose());  
-               stopMap = 1; } 
+                 System.out.println("You found a " + theItem() + " ! " + theItem().getPurpose());  
+               stopMap = 1; }
+               if ((map[_playerRow][_playerColumn].hasItem()) && (map[_playerRow][_playerColumn].hasWeapon())) { 
+                   System.out.println("You found a " + theItem() + " ! " + theItem().getPurpose()); 
+                   stopMap = 1; }
                else if (map[_playerRow][_playerColumn].hasItem()) {
-          System.out.println("You found a " + theItem() + "! It's now in your inventory. You can now..");
+          System.out.println("You found a " + theItem() + " ! It's now in your inventory. You can now..");
           stopMap = 1; 
         }
         

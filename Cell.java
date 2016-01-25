@@ -51,10 +51,26 @@ public class Cell {
         
     public boolean hasPotion() {
         boolean poo = false; 
+        if (_item instanceof Potion) {
+            poo = true; 
+        }
+        /**
          if (_item._name.equals("Potion"))
          poo = true;
+         
+        **/ 
          return poo;
     }
+    
+    
+    public boolean hasWeapon() { 
+        boolean too = false; 
+        if (_item instanceof Weapon) { 
+            too = true; 
+        }
+        return too;
+    }
+    
        
     public boolean hasPlayer() {
         boolean foo = false; 
@@ -72,8 +88,7 @@ public class Cell {
     public Item getItem(){
         return _item;
     }
-   
-    
+  
     public void addMonster(Monster mon) { 
         _monsta = mon; 
     } 

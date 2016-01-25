@@ -38,7 +38,7 @@ public class Player extends Char {
             return "There's nothing in your Inventory!";
         }
         for(int x=0; x<_inventory.size(); x++){
-            stringInventory+=" "+_inventory.get(x);
+            stringInventory+=", "+_inventory.get(x);
         }
         return stringInventory;
     }
@@ -55,6 +55,12 @@ public int getHealth() {
     public void addHealth(int p) { 
         _health += p; 
 }
+    public void addStr(int p) { 
+        _strength += p; 
+    }
+    public void addDef(int p ) {
+        _defense += p;
+    }
     public String printStats(){
         return ("Health:"+this._health+" Defense:"+this._defense+" Strength:"+this._strength+" Attack:"+this._attack);
     }

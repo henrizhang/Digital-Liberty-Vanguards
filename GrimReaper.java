@@ -5,6 +5,7 @@ public class GrimReaper extends Monster {
         _health=30;
         _defense=10;
         _strength=(int)(Math.random() * 45) + 18;
+        
     }
     
     public int attack(Player a) {

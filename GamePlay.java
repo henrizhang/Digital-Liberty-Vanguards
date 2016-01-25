@@ -103,7 +103,7 @@ public static void main (String [] args) {
         if (userCommand.equals("stats")){
             System.out.println(player1.printStats());
             String input2="sike";
-            System.out.println("(Press Space+enter to continue");
+            System.out.println("(Press Space+enter to continue)");
             while(!(input2.equals(" "))){
                 input2=Keyboard.readString();
             }
@@ -118,11 +118,21 @@ public static void main (String [] args) {
         
             if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasItem()) {
                 if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasPotion()) { 
-                    player1.addHealth((int) (Math.random() * 13 + 21));
+                    player1.addHealth(200-player1.getHealth());
                     System.out.println("Your health is now " + player1.getHealth());
                     game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].removeItem(game.array.theItem());
                     System.out.println("Press space+enter to return to the map");
                 }
+                if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasWeapon()) { 
+                    player1.add(game.array.theItem()); 
+                    if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getItem().which() == true ) {
+                        player1.addStr((int)(Math.random()*6)); 
+                        game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].removeItem(game.array.theItem());
+                    }
+                    else player1.addDef((int)(Math.random()*6));
+                    game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].removeItem(game.array.theItem());
+                }
+                    
                 else { 
                     player1.add(game.array.theItem());
                     game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].removeItem(game.array.theItem());
@@ -152,7 +162,7 @@ public static void main (String [] args) {
                 else if (!game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getMonster().isAlive()) { 
                     System.out.println("Somehow even with your limited memory, you slained the " + game.array.theMonster()); 
                     game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].removeMonster(game.array.theMonster());
-                    System.out.println("Press space+enter to return to the map"); 
+                    System.out.println("Press anykey+enter to return to the map"); 
                 } 
             else if (!player1.isAlive()) { 
                 System.out.println("You failed. " + game.array.theMonster() + " has killed you."); 
