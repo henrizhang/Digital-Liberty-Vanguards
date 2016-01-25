@@ -61,32 +61,13 @@ public int getHealth() {
     public void addDef(int p ) {
         _defense += p;
     }
+    
+    public void decBoth(int p) {
+        _strength -= p;
+        _defense -= p;
+    }
+        
     public String printStats(){
         return ("Health:"+this._health+" Defense:"+this._defense+" Strength:"+this._strength+" Attack:"+this._attack);
     }
 }
-
-
-    
-    /**
-    
-    public static void main (String[] args) {
-        Player a = new Player(); 
-        System.out.println(a.inventory);
-        a.inventory._inventory.add("key");
-        System.out.println(a.inventory); 
-       ***/ 
-
-
-
-        /**
-        int x=0; 
-        String output= "";
-        while (x<inventory.size()){
-            output+=inventory.get(x);
-        }
-        return output;
-    }
-    ***/
-
-    

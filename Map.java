@@ -6,16 +6,46 @@ public class Map {
     "You have reached the end of the desert. Beyond this, a raging sandstorm blocks your path.", "You have reached the end of the desert. Beyond this, a raging sandstorm blocks your path.", "You have reached the end of the desert. Beyond this, a raging sandstorm blocks your path.",
     "The enormous steepness of the slope of the mountain to the north prevents you from going further up.","The enormous steepness of the slope of the mountain to the north prevents you from going further up.", "The enormous steepness of the slope of the mountain to the north prevents you from going further up.",
     "Empty vials and broken machinery are scattered across the end of this room.","Inactive automatons line across the room. ","This appears to be where the owner of the facility stays.", 
+    //first row
     "You have reached the Western end of the desert. Beyond this, a raging sandstorm blocks your path.", "The Great Sand Dunes stretch on.", "The temperature is hot. The sun is scorching. You seem to be near a desert.", 
     "The area becomes rocky. You seem to be near a mountain", "You are clearly in the ranges now. The jagged path of rock seems overwhelming to climb.","You near the Eastern end of the mountain ranges. The long hills serve almost as a barrier of some sort...", 
     "The facility has a machine for... robot manufacturing? But why?", "You have opened the security door with the Skeleton Key. Inside it is a strange factory.","A library of research documents and notes can be seen here.",
-    "", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "",""};
+    //second row
+    "You have reached the Western end of the desert. Beyond this, a raging sandstorm blocks your path.", "A pristine river flows here. Wait, it's a mirage! You're still in the dunes...", "Sand mixed with rock spans across the ground. The transition between mountain and desert is here.",
+    "There is a suspicious small cave here. Man made or natural? Interesting.", "More mountains.", "You near the Eastern end of the mountain ranges. The long hills serve almost as a barrier of some sort...",
+    "Ahead is a mysterious, tall grey building.", "Ahead, there is the door to the mysterious grey building. There is a keyhole, without unlocking the door, it won't budge.", "Ahead is a mysterious, tall grey building.",
+    //third row
+    "You have reached the Western end of the desert. Beyond this, a raging sandstorm blocks your path.","The Great Sand Dunes stretch on.", "The sun is scorching. You seem to be near a desert.", 
+    "You seem to be on the Southern end of a wide mountain range.", "You seem to be on the Southern end of a wide mountain range.", "You seem to be on the Southern end of a wide mountain range.",
+    "It's freezing here!", "The frost blows around. Permafrost lines the ground.","This is the end of the glacial zone. To the east is a hopeless, infinite sea.",
+    //fourth row
+    "Some broken pottery shards are scattered across the dusty ground. The giant wall blocks your wall to the right.", "", "", 
+    "", "","", 
+    "","","",
+    //fifth row
+    "","","",
+    "","", "",
+    "","","", 
+    //sixth row
+    "", "", "",
+    "","", "", 
+    "","","",
+    //seventh row
+    "","","",
+    "", "", "", 
+    "", "","",
+    //eighth row
+    "", "","",
+    "", "", "",
+    "", "", "",
+    //ninth row
+    };
    
     public Cell[][] map;
     private int _playerRow;
     private int _playerColumn;
     private String playerLocation;
-    private Item item, pot, weapon, weapon2, boost;  
+    private Item item, pot, weapon, weapon2, boost, drain;   
     private Monster grim, zomb, joke, kil;
     private Slots slot; 
     private int stopMap = 0; 
@@ -59,6 +89,7 @@ public class Map {
          weapon = new Weapon(); 
          weapon2 = new Weapon(); 
          boost = new Booster(); 
+         drain = new Drain(); 
          map[0][0].addItem(item); 
          map[0][1].addMonster(grim); 
          map[3][4].addMonster(zomb);
@@ -69,6 +100,7 @@ public class Map {
          map[5][7].addItem(weapon); 
          map[6][5].addItem(weapon2);
          map[8][8].addItem(boost); 
+         map[1][6].addItem(drain); 
          }
 
          

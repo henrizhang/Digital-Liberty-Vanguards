@@ -8,7 +8,9 @@ public class Slots extends Game {
 	private static final Item[] ITEMS = {
 		new Key(), new Key(), new Key(), 
 		new Potion(), new Potion(), new Potion(), 
-		new Clue(), new Clue(), new Clue() };
+		new Clue(), new Clue(), new Clue(),
+		new Booster(),new Booster(),new Booster(),
+		new Drain(),new Drain(),new Drain() };
   private Item[] _items; //to be init'd by each instance
 
 
@@ -60,8 +62,8 @@ public class Slots extends Game {
       =====================================*/
     public void spinOnce() {
 	int s = 0;
-        for (int r = 0; r < 9; r++) {
-	    s = (int)(Math.random() * 8); 
+        for (int r = 0; r < 15; r++) {
+	    s = (int)(Math.random() * 14); 
 	    swap(r,s);
  
 	}
@@ -81,54 +83,8 @@ public class Slots extends Game {
 	else return false; 
     }
     
-    public String theWin() {
-    	String win = ""; 
-    	if (jackpot() == true)
-    		win+= _items[0]._name;
-    		return win; 
+    public Item theWin() {
+    		return _items[0];
     }
 
-					       
-
-   
-    //main() method for testing
-    public static void main( String[] args ) {
-	//usage: move bar below down 1 line at a time to test functionality...
-
-	Slots machine01 = new Slots();
-	Slots machine02 = new Slots();
-
-	//test to verify slot machines function indepently
-	System.out.println();
-	System.out.println( "Machine01 initial state:\t" + machine01 );
-	System.out.println( "Machine02 initial state:\t" + machine02 );
-
-	System.out.println( "\nSpinning machine01...\n" );
-
-	machine01.spinOnce();
-	machine02.spinOnce();
-
-	System.out.println();
-	System.out.println( "Machine01 state:\t" + machine01 );
-	System.out.println( "Machine02 state:\t" + machine02 );
-	System.out.println();
-
-	//test gamble-until-you-win mechanism
-
-	System.out.println( "Preparing to spin until...jackpot! . . ." );
-	System.out.println( "------------------------------------" );
-
-	//if you haven't won, spin again until you win!
-	while( machine02.jackpot() == false ) {
-	    System.out.println( "Your spin..." + "\t" + machine02 );
-	    System.out.println( "LOSE\n" );
-	    machine02.spinOnce();
-	}
-
-	System.out.println( "====================================" );
-	System.out.println( "Your spin..." + "\t" + machine02 );
-	System.out.println( "JACKPOT!\n" );
-    
-    }//end main
-
-}//end class Slots
+}

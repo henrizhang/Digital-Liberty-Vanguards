@@ -68,7 +68,7 @@ public static void main (String [] args) {
                 input=Keyboard.readString();
                 //need to enter space to continue
             }
-            System.out.println("type 'help' for further aid. w, a, s, d to move. type inventory to open inventory. (Press Space+enter to continue)");
+            System.out.println("type 'help' for further aid. w, a, s, d to move. type inventory to open inventory. press space+enter to return to the map. (Press Space+enter to continue)");
             input="sike";//resetting input
             while (!(input.equals(" "))) {
                 input=Keyboard.readString();
@@ -136,6 +136,15 @@ public static void main (String [] args) {
                     else player1.addDef((int)(Math.random()*6));
                     game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].removeItem(game.array.theItem());
                 }
+                else if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasBooster()) { 
+                    player1.addStr(game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getItem().random());
+                    player1.addDef(game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getItem().random());
+                    game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].removeItem(game.array.theItem());
+                }
+                else if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasDrain()) { 
+                    player1.decBoth(game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getItem().random());
+                    game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].removeItem(game.array.theItem());
+                }
                     
                 else { 
                     player1.add(game.array.theItem());
@@ -199,16 +208,25 @@ public static void main (String [] args) {
              game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].removeGame(game.array.theGame());
              System.out.println("You won a " + play.theWin() + "!");
              
-             if (play.theWin().equals("Potion")) {
+             if (play.theWin() instanceof Potion) {
                  player1.addHealth((int)(200-player1.getHealth()));
                  System.out.println("Your health is now " + player1.getHealth());
              }
-             else if  (play.theWin().equals("Clue")) { 
+             else if (play.theWin() instanceof Clue) { 
                  System.out.println("Your name starts......"); 
              }
-             else if (play.theWin().equals("Key")) {
+             else if (play.theWin() instanceof Key) {
                  System.out.println("This key is useless");
              }   
+             else if (play.theWin() instanceof Booster) { 
+                  player1.addStr(game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getItem().random());
+                  player1.addDef(game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getItem().random());
+             }
+             else if (play.theWin() instanceof Drain) { 
+                 player1.decBoth(game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getItem().random());
+                 game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].removeItem(game.array.theItem());
+             }
+                 
                  
             System.out.println("Press space+enter to return to the map"); 
         }
@@ -218,13 +236,14 @@ public static void main (String [] args) {
         }
         else {
             System.out.println("You cannot go here. Try again.");
-            String input3="sike"; 
-            while(!(input3.equals(" "))) {
-                System.out.println("(Press Space+enter to continue)");
-                input3=Keyboard.readString();    
+       //     String input3="sike"; 
+          //  while(!(input3.equals(" "))) {
+                System.out.println("(Press space+enter to return to the map)");
+            //    input3=Keyboard.readString();    
+                
             }
             
-        }
+        
         
     
     if (game.gameOver == true) {

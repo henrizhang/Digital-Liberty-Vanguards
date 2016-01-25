@@ -73,6 +73,13 @@ public class Cell {
         }
         return moo; 
     }
+    public boolean hasDrain() {
+        boolean coo = false; 
+        if (_item instanceof Drain) { 
+            coo = true; 
+        }
+        return coo; 
+    }
        
     public boolean hasPlayer() {
         boolean foo = false; 

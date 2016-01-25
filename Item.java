@@ -24,9 +24,12 @@ public abstract class Item {
          }
          return shield; 
      }
+     
+     public int random() { 
+         return (int)(Math.random() * 7);
     
 }
-
+}
 
 
         
