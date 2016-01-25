@@ -3,9 +3,9 @@ public class Map {
     //constant for default map size
     private final static int DEFAULT_SIZE = 9;
     private final static String[] ENTERTEXT_LIST = {
-    "You have reached the end of the desert. Beyond this, a raging sandstorm blocks your path.", 
-    "You have reached the end of the desert.", 
-    "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "",""};
+    "You have reached the end of the desert. Beyond this, a raging sandstorm blocks your path.", "You have reached the end of the desert. Beyond this, a raging sandstorm blocks your path.", "You have reached the end of the desert. Beyond this, a raging sandstorm blocks your path.",
+    "The enormous steepness of the slope of the mountain to the north prevents you from going further up.","The enormous steepness of the slope of the mountain to the north prevents you from going further up.", "The enormous steepness of the slope of the mountain to the north prevents you from going further up.",
+    "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "",""};
    
     public Cell[][] map;
     private int _playerRow;
@@ -134,7 +134,7 @@ public class Map {
            if ((map[_playerRow][_playerColumn].hasItem()) && (map[_playerRow][_playerColumn].hasPotion())) { 
                  System.out.println("You found a " + theItem() + " ! " + theItem().getPurpose());  
                stopMap = 1; }
-               if ((map[_playerRow][_playerColumn].hasItem()) && (map[_playerRow][_playerColumn].hasWeapon())) { 
+              else if ((map[_playerRow][_playerColumn].hasItem()) && (map[_playerRow][_playerColumn].hasWeapon())) { 
                    System.out.println("You found a " + theItem() + " ! " + theItem().getPurpose()); 
                    stopMap = 1; }
                else if (map[_playerRow][_playerColumn].hasItem()) {
@@ -144,10 +144,11 @@ public class Map {
         
         else if (map[_playerRow][_playerColumn].hasMonster()) {
             stopMap = 1; 
-            System.out.println("A " + theMonster() + " has appeared. Prepare to FIGHT"); 
+        
         }
         
         else if (map[_playerRow][_playerColumn].hasGame()) {
+
              stopMap = 1; 
         }
         else stopMap = 0; 
@@ -188,6 +189,10 @@ public class Map {
     public String getPlayerLocation(){
         return this.playerLocation;
     }
+    public void changeStop(int c) { 
+        stopMap = 0; 
+    }
+        
     
 /*** add mutator to Cell so u can change the Cells appearance (whats strung and seen on the map)
         when the player enters that Cell. 

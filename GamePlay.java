@@ -143,7 +143,8 @@ public static void main (String [] args) {
             
             else if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasMonster()) { 
          //       System.out.println("Open inventory to see what you can use to fight");  //inventory doesn't open up -- what if we don't use weapons? 
-                System.out.println("Press b+enter to attack"); 
+                System.out.println("A " + game.array.theMonster() + " has appeared.");
+                System.out.println("Press b+enter to fight. Type run+enter to escape and return to the map"); 
                 while (player1.isAlive() && game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getMonster().isAlive()) {   
                 String command = Keyboard.readString(); 
                     if (command.equals("b")) { 
@@ -152,6 +153,11 @@ public static void main (String [] args) {
                         System.out.println("You attacked " + game.array.theMonster() + " and dealt " + a1 + " damage."); 
                     System.out.println("You were attacked and lost " + a2 + " HP ");   
                     }
+                   else if (command.equals("run")) { 
+                       game.array.changeStop(0); 
+                       break; 
+                       
+                }
                 }
                 if (!player1.isAlive() && (!game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getMonster().isAlive())) { 
                     System.out.println("You have both been killed"); 
