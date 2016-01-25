@@ -48,7 +48,7 @@ public class Cell {
     public boolean hasItem() { 
         return (!(_item==null));
         }
-        
+   
     public boolean hasPotion() {
         boolean poo = false; 
         if (_item instanceof Potion) {

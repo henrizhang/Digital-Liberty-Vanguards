@@ -116,7 +116,6 @@ public static void main (String [] args) {
             game.array.changeStop(1);
             
              if (userCommand.equals(" ")) { 
-            System.out.println(game.array);
             game.array.changeStop(0); 
         }
         
@@ -164,7 +163,8 @@ public static void main (String [] args) {
                         int a1 = player1.attack(game.array.theMonster()); 
                         int a2 = game.array.theMonster().attack(player1); 
                         System.out.println("You attacked " + game.array.theMonster() + " and dealt " + a1 + " damage."); 
-                    System.out.println("You were attacked and lost " + a2 + " HP ");   
+                        System.out.println("You were attacked and lost " + a2 + " HP ");   
+                        System.out.println("Attack again"); 
                     }
                    else if (command.equals("run")) { 
                        game.array.changeStop(0); 
@@ -179,7 +179,7 @@ public static void main (String [] args) {
                 else if (!game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getMonster().isAlive()) { 
                     System.out.println("Somehow even with your limited memory, you slained the " + game.array.theMonster()); 
                     game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].removeMonster(game.array.theMonster());
-                    System.out.println("Press map+enter to return to the map"); 
+                    System.out.println("Press space+enter to return to the map"); 
                 } 
             else if (!player1.isAlive()) { 
                 System.out.println("You failed. " + game.array.theMonster() + " has killed you."); 
@@ -189,8 +189,9 @@ public static void main (String [] args) {
         else if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasGame()) {
             Slots play = new Slots(); 
             play.spinOnce(); 
+            System.out.println("Woah, a weird looking slot machine stands on the side. Tiny words flash on the screen: ");
             System.out.println( "play state:\t" + play );
-            System.out.println("Type spin to keep spinning. Press space+enter to spin once"); 
+            System.out.println("Type spin to keep spinning for a win. Press space+enter to return to the map"); 
             if (userCommand.equals("spin")) { 
             	while( play.jackpot() == false ) {
 	    System.out.println( "Your spin..." + "\t" + play);

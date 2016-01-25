@@ -19,25 +19,27 @@ public class Map {
     "You seem to be on the Southern end of a wide mountain range.", "You seem to be on the Southern end of a wide mountain range.", "You seem to be on the Southern end of a wide mountain range.",
     "It's freezing here!", "The frost blows around. Permafrost lines the ground.","This is the end of the glacial zone. To the east is a hopeless, infinite sea.",
     //fourth row
-    "Some broken pottery shards are scattered across the dusty ground. The giant wall blocks your wall to the right.", "", "", 
-    "", "","", 
-    "","","",
+    "Some broken pottery shards are scattered across the dusty ground. The giant stone wall blocks your way to the right.", "Abandoned buildings are all around you. What could this mean?", "There is a large open space nearby, with many chairs.", 
+    "Leaves begin to block out your vision. Overgrown plants are everywhere", "Trunks of immense trees tower over you. You are deep inside the forest.","The trees have become large enough to completely halt further exploration Eastward.", 
+    "Signs of life seem to be lowering. The cold is too much to bear.","You are in the middle of a glacier.","This is the end of the glacial zone. To the east is a hopeless, infinite sea.",
     //fifth row
-    "","","",
-    "","", "",
-    "","","", 
+    "Some broken pottery shards are scattered across the dusty ground. The giant stone wall blocks your way to the right.","More abandoned buildings. Evidence of a ruined city.","Here is a sacred statue of some of divine being. Its head has been vandalized.",
+    "Leaves begin to block out your vision. Overgrown plants are everywhere","Trunks of immense trees tower over you. You are deep inside the forest.", "The forest continues on.",
+    "The forest continues on.","The trees grow even taller and wider.","The trees have become large enough to completely halt further exploration Eastward.", 
     //sixth row
-    "", "", "",
-    "","", "", 
-    "","","",
+    "Some broken pottery shards are scattered across the dusty ground. The giant stone wall blocks your way to the right.", "More abandoned buildings. Evidence of a ruined city.", "More abandoned buildings. Evidence of a ruined city.",
+    "Leaves begin to block out your vision. Overgrown plants are everywhere","Trunks of immense trees tower over you. You are deep inside the forest.", "The forest continues on.", 
+    "The forest continues on.","The trees grow even taller and wider.","The trees have become large enough to completely halt further exploration Eastward.",
     //seventh row
-    "","","",
-    "", "", "", 
-    "", "","",
+    "Some broken pottery shards are scattered across the dusty ground. The giant stone wall blocks your way to the right.", "More abandoned buildings. Evidence of a ruined city.", "More abandoned buildings. Evidence of a ruined city.",
+    "Leaves begin to block out your vision. Overgrown plants are everywhere","Trunks of immense trees tower over you. You are deep inside the forest.", "The forest continues on.", 
+    "The forest continues on.","The trees grow even taller and wider.","The trees have become large enough to completely halt further exploration Eastward.",
+  
     //eighth row
-    "", "","",
-    "", "", "",
-    "", "", "",
+    "Some broken pottery shards are scattered across the dusty ground. The giant stone wall blocks your way to the right.", "More abandoned buildings. Evidence of a ruined city.", "More abandoned buildings. Evidence of a ruined city.",
+    "Leaves begin to block out your vision. Overgrown plants are everywhere","Trunks of immense trees tower over you. You are deep inside the forest.", "The forest continues on.", 
+    "The forest continues on.","The trees grow even taller and wider.","The trees have become large enough to completely halt further exploration Eastward.",
+  
     //ninth row
     };
    
@@ -46,7 +48,7 @@ public class Map {
     private int _playerColumn;
     private String playerLocation;
     private Item item, pot, weapon, weapon2, boost, drain;   
-    private Monster grim, zomb, joke, kil;
+    private Monster grim, scorp, joke, kil;
     private Slots slot; 
     private int stopMap = 0; 
     
@@ -81,7 +83,7 @@ public class Map {
 	     
          item = new Key();
          grim = new GrimReaper(); 
-         zomb = new Zombie(); 
+         scorp = new Scorpion(); 
          joke = new Joker(); 
          pot = new Potion();
          slot = new Slots(); 
@@ -92,7 +94,7 @@ public class Map {
          drain = new Drain(); 
          map[0][0].addItem(item); 
          map[0][1].addMonster(grim); 
-         map[3][4].addMonster(zomb);
+         map[3][4].addMonster(scorp);
          map[2][2].addMonster(joke);
          map[1][3].addItem(pot);
          map[4][2].addGame(slot); 
@@ -185,7 +187,6 @@ public class Map {
         }
         
         else if (map[_playerRow][_playerColumn].hasGame()) {
-            System.out.println("Woah. A weird looking slot machine.");
 
              stopMap = 1; 
         }

@@ -1,5 +1,4 @@
-public class GrimReaper extends Monster { 
-    
+public class GrimReaper extends Monster {     
      public GrimReaper () { 
         super("Grim Reaper"); 
         _health=30;
