@@ -6,25 +6,34 @@ public class GamePlay {
     private int numMoves; //number of times player has moved in the game
     private Game Gameswag;
     //game or string that represents a game
+    private Player player1;
     
 public GamePlay() { 
     gameOver = false; 
     numMoves=-1;
     array=new Map();
+    player1=new Player();
 }
 
 public String newGame() {
     String start = "";
     start += "Who U";
     array=new Map();
+    player1=new Player();
     return start; 
 }
 
 public boolean canGoHere(String direction){
+   
     if (direction.equals("w")) {
-       /* if array.getPlayerRow(){
+        if (array.getPlayerRow()==3){
+            if (((array.getPlayerColumn()==6)||(array.getPlayerColumn()==7)||(array.getPlayerColumn()==8))&&(!(player1.getHasAccess()))){
+                System.out.println("You need the Skeleton Key to access this building!");
+                return false;
+            }
+        }
             
-        }*/
+        
         if ((this.array.getPlayerRow()-1)<0){
             return false;
         }
@@ -40,9 +49,16 @@ public boolean canGoHere(String direction){
         }
     }
     if (direction.equals("d")) { 
+        if (array.getPlayerColumn()==5){
+            if (((array.getPlayerRow()==0)||(array.getPlayerRow()==1)||(array.getPlayerRow()==2))&&(!(player1.getHasAccess()))){
+                System.out.println("You need the Skeleton Key to access this building!");
+                return false;
+            }
+        }
         if ((this.array.getPlayerColumn()+1)>8){
             return false;
         }
+        
     }
     
     return true;
@@ -53,7 +69,7 @@ public boolean canGoHere(String direction){
 
 public static void main (String [] args) { 
     
-    Player player1 = new Player();
+    //Player player1 = new Player();
     GamePlay game = new GamePlay(); 
     while (!(game.gameOver)) {
         //FIRST ITERATION OF THE LOOP IS BEFORE THE INITIAL MOVEMENT OF THE PLAYER
@@ -72,7 +88,7 @@ public static void main (String [] args) {
                 input=Keyboard.readString();
                 //need to enter space to continue
             }
-            System.out.println("type 'help' for further aid. w, a, s, d to move. type inventory to open inventory. press space+enter to return to the map. (Press Space+enter to continue)");
+            System.out.println("type inventory to open inventory. press space+enter to return to the map. (Press Space+enter to continue)");
             input="sike";//resetting input
             while (!(input.equals(" "))) {
                 input=Keyboard.readString();
@@ -93,7 +109,7 @@ public static void main (String [] args) {
         
         if (userCommand.equals("inventory")) {
          //   player1._inventory.add("Key");
-            System.out.println(player1.stringifyInventory());     
+            System.out.println(game.player1.stringifyInventory());     
       //      game.array.stopMap = 1;  [private access] 
             System.out.println("(Press Space+enter to continue)");
             String input2="sike"; 
@@ -104,7 +120,7 @@ public static void main (String [] args) {
         }
         
         if (userCommand.equals("stats")){
-            System.out.println(player1.printStats());
+            System.out.println(game.player1.printStats());
             String input2="sike";
             System.out.println("(Press Space+enter to continue)");
             while(!(input2.equals(" "))){
@@ -117,40 +133,41 @@ public static void main (String [] args) {
         if (game.canGoHere(userCommand)){
             game.array.movePlayer(userCommand); 
             System.out.println(game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getEnterText());
-            game.array.changeStop(1);
-            
+           //game.array.changeStop(1);
+            /**
              if (userCommand.equals(" ")) { 
             game.array.changeStop(0); 
-        }
+        }**/ 
         
-            else if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasItem()) {
+            if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasItem()) {
                 if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasPotion()) { 
-                    player1.addHealth(200-player1.getHealth());
-                    System.out.println("Your health is now " + player1.getHealth());
+                    game.player1.addHealth(200-game.player1.getHealth());
+                    System.out.println("Your health is now " + game.player1.getHealth());
                     game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].removeItem(game.array.theItem());
                     System.out.println("Press space+enter to return to the map");
                 }
                 else if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasWeapon()) { 
-                    player1.add(game.array.theItem()); 
+                    game.player1.add(game.array.theItem()); 
                     if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getItem().which() == true ) {
-                        player1.addStr((int)(Math.random()*6)); 
+                        game.player1.addStr((int)(Math.random()*6)); 
                         game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].removeItem(game.array.theItem());
                     }
-                    else player1.addDef((int)(Math.random()*6));
+                    else game.player1.addDef((int)(Math.random()*6));
                     game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].removeItem(game.array.theItem());
                 }
                 else if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasBooster()) { 
-                    player1.addStr(game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getItem().random());
-                    player1.addDef(game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getItem().random());
+                    game.player1.addStr(game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getItem().random());
+                    game.player1.addDef(game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getItem().random());
                     game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].removeItem(game.array.theItem());
                 }
                 else if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasDrain()) { 
-                    player1.decBoth(game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getItem().random());
+                    game.player1.decBoth(game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getItem().random());
                     game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].removeItem(game.array.theItem());
                 }
                     
                 else { 
-                    player1.add(game.array.theItem());
+                    game.player1.add(game.array.theItem());
+                    game.player1.setHasAccess(true);
                     game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].removeItem(game.array.theItem());
                     System.out.println("Press space+enter to return to the map"); 
                 }
@@ -161,11 +178,11 @@ public static void main (String [] args) {
          //       System.out.println("Open inventory to see what you can use to fight");  //inventory doesn't open up -- what if we don't use weapons? 
                 System.out.println("A " + game.array.theMonster() + " has appeared.");
                 System.out.println("Press b+enter to fight. Type run+enter to escape and return to the map"); 
-                while (player1.isAlive() && game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getMonster().isAlive()) {   
+                while (game.player1.isAlive() && game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getMonster().isAlive()) {   
                 String command = Keyboard.readString(); 
                     if (command.equals("b")) { 
-                        int a1 = player1.attack(game.array.theMonster()); 
-                        int a2 = game.array.theMonster().attack(player1); 
+                        int a1 = game.player1.attack(game.array.theMonster()); 
+                        int a2 = game.array.theMonster().attack(game.player1); 
                         System.out.println("You attacked " + game.array.theMonster() + " and dealt " + a1 + " damage."); 
                         System.out.println("You were attacked and lost " + a2 + " HP ");   
                         System.out.println("Attack again"); 
@@ -176,7 +193,7 @@ public static void main (String [] args) {
                        
                 }
                 }
-                if (!player1.isAlive() && (!game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getMonster().isAlive())) { 
+                if (!game.player1.isAlive() && (!game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getMonster().isAlive())) { 
                     System.out.println("You have both been killed"); 
                     game.gameOver = true; 
                 }
@@ -185,7 +202,7 @@ public static void main (String [] args) {
                     game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].removeMonster(game.array.theMonster());
                     System.out.println("Press space+enter to return to the map"); 
                 } 
-            else if (!player1.isAlive()) { 
+            else if (!game.player1.isAlive()) { 
                 System.out.println("You failed. " + game.array.theMonster() + " has killed you."); 
                 game.gameOver = true; 
                 }
@@ -214,8 +231,8 @@ public static void main (String [] args) {
              System.out.println("You won a " + play.theWin() + "!");
              
              if (play.theWin() instanceof Potion) {
-                 player1.addHealth((int)(200-player1.getHealth()));
-                 System.out.println("Your health is now " + player1.getHealth());
+                 game.player1.addHealth((int)(200-game.player1.getHealth()));
+                 System.out.println("Your health is now " + game.player1.getHealth());
              }
              else if (play.theWin() instanceof Clue) { 
                  System.out.println("Your name starts......"); 
@@ -224,13 +241,13 @@ public static void main (String [] args) {
                  System.out.println("This key is useless");
              }   
              else if (play.theWin() instanceof Booster) { 
-                  player1.addStr((int)(Math.random() * 6));
-                  player1.addDef((int)(Math.random() * 6));
+                  game.player1.addStr((int)(Math.random() * 6));
+                  game.player1.addDef((int)(Math.random() * 6));
                   System.out.println("Your strength and defense have been increased");
                
              }
              else if (play.theWin() instanceof Drain) { 
-                 player1.decBoth((int)(Math.random() * 6));
+                 game.player1.decBoth((int)(Math.random() * 6));
                  System.out.println("Your strength and defense have been lowered"); 
                  
              }
@@ -244,12 +261,13 @@ public static void main (String [] args) {
         }
         else {
             System.out.println("You cannot go here. Try again.");
-       //     String input3="sike"; 
-          //  while(!(input3.equals(" "))) {
+           String input3="sike"; 
+            while(!(input3.equals(" "))) {
                 System.out.println("(Press space+enter to return to the map)");
-            //    input3=Keyboard.readString();    
+                input3=Keyboard.readString();    
                 
             }
+        }
             
         
         

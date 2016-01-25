@@ -2,13 +2,9 @@
 //simulates a slot machine in your very own terminal
 //Slots can be made up of Items ? and you collect another clue / item ? or u could just give a hint 
 public class Slots extends Game {
-	private Item key; 
-	private Item pot;
-	private Item clue; 
 	private static final Item[] ITEMS = {
 		new Key(), new Key(), new Key(), 
 		new Potion(), new Potion(), new Potion(), 
-		new Clue(), new Clue(), new Clue(),
 		new Booster(),new Booster(),new Booster(),
 		new Drain(), new Drain(), new Drain() };
   private Item[] _items; //to be init'd by each instance
@@ -62,8 +58,8 @@ public class Slots extends Game {
       =====================================*/
     public void spinOnce() {
 	int s = 0;
-        for (int r = 0; r < 15; r++) {
-	    s = (int)(Math.random() * 14); 
+        for (int r = 0; r < 12; r++) {
+	    s = (int)(Math.random() * 11); 
 	    swap(r,s);
  
 	}

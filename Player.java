@@ -2,15 +2,24 @@ import java.util.*;
 //http://stackoverflow.com/questions/3543771/best-practice-concerning-private-arraylist-and-other-such-constructions
 public class Player extends Char {
     private ArrayList <Item> _inventory; 
+    private boolean hasAccess;
     public Player() {
         super("Player");
         _inventory = new ArrayList <Item> ();  
-        _health = 200; 
+        _health = 250; 
         _defense = 15;
         _strength = (int)(Math.random() * 45) + 25;
+        hasAccess=false;
 
     }
 
+    public boolean getHasAccess(){
+        return hasAccess;
+    }
+    
+    public void setHasAccess(boolean tf){
+        hasAccess=tf;
+    }
     
     public String toString() {
         String items = "["; 
@@ -29,6 +38,9 @@ public class Player extends Char {
     
     public void remove(Object n){
         _inventory.remove(n); 
+    }
+    public boolean contains(Item n){
+        return _inventory.contains(n); 
     }
     
     public String stringifyInventory(){
