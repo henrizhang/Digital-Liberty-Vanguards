@@ -85,7 +85,6 @@ public static void main (String [] args) {
         System.out.println(game.array);
         System.out.println("This is the map. Your location is marked by O. Where would you like to go?");
         } 
-        //ORDER OF THE COMMAND/RESULT MATTERS!!!
         String userCommand=Keyboard.readString(); 
         
         if (userCommand.equals("inventory")) {
@@ -115,6 +114,7 @@ public static void main (String [] args) {
         
         if (game.canGoHere(userCommand)){
             game.array.movePlayer(userCommand); 
+            System.out.println(game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getEnterText());
         
             if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasItem()) {
                 if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasPotion()) { 
@@ -123,7 +123,7 @@ public static void main (String [] args) {
                     game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].removeItem(game.array.theItem());
                     System.out.println("Press space+enter to return to the map");
                 }
-                if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasWeapon()) { 
+                else if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasWeapon()) { 
                     player1.add(game.array.theItem()); 
                     if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].getItem().which() == true ) {
                         player1.addStr((int)(Math.random()*6)); 
@@ -140,8 +140,6 @@ public static void main (String [] args) {
                 }
             }
         
-        
-                
             
             else if (game.array.map[game.array.getPlayerRow()][game.array.getPlayerColumn()].hasMonster()) { 
          //       System.out.println("Open inventory to see what you can use to fight");  //inventory doesn't open up -- what if we don't use weapons? 
@@ -202,16 +200,16 @@ public static void main (String [] args) {
                  System.out.println("This key is useless");
              }   
                  
-             System.out.println("Press space+enter to return to the map"); 
+            System.out.println("Press space+enter to return to the map"); 
         }
             
         
         }
         }
-        else{
+        else {
             System.out.println("You cannot go here. Try again.");
             String input3="sike"; 
-            while(!(input3.equals(" "))){
+            while(!(input3.equals(" "))) {
                 System.out.println("(Press Space+enter to continue)");
                 input3=Keyboard.readString();    
             }
@@ -225,7 +223,6 @@ public static void main (String [] args) {
     }
     }
         
-    System.out.println();
 }
     
 }

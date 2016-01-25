@@ -2,8 +2,11 @@ public class Map {
 
     //constant for default map size
     private final static int DEFAULT_SIZE = 9;
-
-    
+    private final static String[] ENTERTEXT_LIST = {
+    "You have reached the end of the desert. Beyond this, a raging sandstorm blocks your path.", 
+    "You have reached the end of the desert.", 
+    "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "","","", "", "", "", "", "","", "", "",""};
+   
     public Cell[][] map;
     private int _playerRow;
     private int _playerColumn;
@@ -18,9 +21,12 @@ public class Map {
    // DEFAULT_SIZE*DEFAULT_SIZE map
     public Map() {
 	    map = new Cell[DEFAULT_SIZE][DEFAULT_SIZE];
+	    int x=0;
+	    //counter for populating map with entertext'd cells
 	     for (int i = 0; i < map.length ; i++) {
             for (int j = 0; j < map[i].length; j++) {
-                Cell k = new Cell(); 
+                Cell k = new Cell(ENTERTEXT_LIST[x]);
+                x++;
                 //MAKE ARRAY WITH REGULAR CONSTRUCTORS AND RANDOMS,
                 //THEN STORE THE ONE WITH TRUE FOR HASPLAYER'S CellS IN A VARIABLE
                 map[i][j] = k; // idea : make an array of string of diff location names + randomly populate the arrays? 
@@ -142,8 +148,6 @@ public class Map {
         }
         
         else if (map[_playerRow][_playerColumn].hasGame()) {
-          
-             System.out.println("It's time for a little game");
              stopMap = 1; 
         }
         else stopMap = 0; 
@@ -205,11 +209,7 @@ public class Map {
     public static void main(String[] args) {
         Map a = new Map(); 
     //    Key key = new Key("Key", "Open"); 
-        System.out.println(a);
-        System.out.println(a.playerLocation);
-        System.out.println(a.theItem());
-        System.out.println(a.getPlayerColumn());
-        System.out.println(a.getPlayerRow());
+        System.out.println(a.map[0][0].getEnterText());
     
  //       System.out.println(a.theItem()); 
  //       System.out.println(a.Where());

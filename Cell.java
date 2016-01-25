@@ -21,8 +21,8 @@ public class Cell {
       //default Cell constructor
     }
     
-    public Cell(String name) {
-        _name = name; 
+    public Cell(String enterText) {
+        _enterText = enterText; 
         //constructor with name
     }
     
