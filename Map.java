@@ -2,6 +2,7 @@ public class Map {
 
     //constant for default map size
     private final static int DEFAULT_SIZE = 9;
+    //Strings of statements that are outputted upon entering a cell
     private final static String[] ENTERTEXT_LIST = {
     "You have reached the end of the desert. Beyond this, a raging sandstorm blocks your path.", 
     "You have reached the end of the desert. Beyond this, a raging sandstorm blocks your path.", 
@@ -92,9 +93,9 @@ public class Map {
   
     //8
     };
-   
-    public Cell[][] map;
-    private int _playerRow;
+    
+    public Cell[][] map; //map made of Cell
+    private int _playerRow; 
     private int _playerColumn;
     private String playerLocation;
     private Item item, pot, weapon, weapon2, boost, drain;   
@@ -116,24 +117,19 @@ public class Map {
             for (int j = 0; j < map[i].length; j++) {
                 Cell k = new Cell(ENTERTEXT_LIST[x]);
                 x++;
-                //MAKE ARRAY WITH REGULAR CONSTRUCTORS AND RANDOMS,
-                //THEN STORE THE ONE WITH TRUE FOR HASPLAYER'S CellS IN A VARIABLE
-                map[i][j] = k; // idea : make an array of string of diff location names + randomly populate the arrays? 
+                map[i][j] = k; 
             }
 	     }
-            
-	     
 	     Cell a = new Cell("O");
 	     
 	     int rowPlayer=4; // row of player's starting point 
 	     int columnPlayer=4; // column of player's starting point
 	     map[rowPlayer][columnPlayer] = a; 
-	     
 	     _playerRow=rowPlayer;
 	     _playerColumn=columnPlayer;
 	     playerLocation = rowPlayer + "," + columnPlayer; //storing the starting point of the player marked as "0"
 	     
-	     
+	     //instantiates items,characters,games
          item = new Key();
          finalboss=new FinalBoss();
          mountain = new Mountain(); 
@@ -156,15 +152,16 @@ public class Map {
          soldier8 = new Soldiers();
          soldier9 = new Soldiers();
          soldier10 = new Soldiers();
-         soldier11 = new Soldiers();
-         
+         soldier11 = new Soldiers();   
          pot = new Potion();
          slot = new Slots(); 
          weapon = new Weapon(); 
          weapon2 = new Weapon(); 
          boost = new Booster(); 
          drain = new Drain(); 
-         map[0][0].addItem(item); 
+         
+         //adds it to specific cells 
+         map[0][0].addItem(item);  
          map[0][1].addMonster(desert);
          map[0][3].addMonster(desert2); 
          map[0][4].addMonster(desert3);
@@ -202,11 +199,7 @@ public class Map {
          map[8][5].addMonster(soldier11);
          map[8][7].addItem(pot);
          map[8][8].addItem(boost);
-    
          }
-
-         
-    
     
     //return String representation of this map
     // (make it look like a map)
@@ -231,89 +224,89 @@ public class Map {
             }
         return str; 
     }
-    
+    //gets stopMap
     public int getStopMap(){
         return stopMap;
     }
     
-    ///need to add the null and out of bounds cases 
-    ///if incorrect directions >> output some correcting words 
+//changes where the player is according to the direction strung
        public void movePlayer (String direction) { 
-
-        
+        //w : north     
            if (direction.equals("w")) {
-              
               _playerRow = (Integer.parseInt(playerLocation.substring(0,1)));
               _playerRow -= 1;
               _playerColumn = (Integer.parseInt(playerLocation.substring(2))); 
               playerLocation = _playerRow + "," + _playerColumn; 
            }
-           
+        //s : south   
            if (direction.equals("s")) {
                _playerRow = (Integer.parseInt(playerLocation.substring(0,1)));
                _playerRow+=1;
                _playerColumn = (Integer.parseInt(playerLocation.substring(2))); 
               playerLocation = _playerRow + "," + _playerColumn; 
            }
-           
+        //a : west 
            if (direction.equals("a")) { 
                _playerRow = (Integer.parseInt(playerLocation.substring(0,1)));
                _playerColumn = (Integer.parseInt(playerLocation.substring(2))); 
                _playerColumn -= 1; 
               playerLocation = _playerRow + "," + _playerColumn; 
            }
-           
+        //d : east    
            if (direction.equals("d")) { 
                _playerRow = (Integer.parseInt(playerLocation.substring(0,1)));
                _playerColumn = (Integer.parseInt(playerLocation.substring(2))); 
                _playerColumn+=1;
               playerLocation = _playerRow + "," + _playerColumn; 
            }
-        
+        //if a cell has a certain item - the map should not be printed
            if (((map[_playerRow][_playerColumn].hasItem()) && (map[_playerRow][_playerColumn].hasPotion())) ||
                 ((map[_playerRow][_playerColumn].hasItem()) && (map[_playerRow][_playerColumn].hasWeapon())) || 
-                 ((map[_playerRow][_playerColumn].hasItem()) && (map[_playerRow][_playerColumn].hasBooster()))) { 
-       
+                 ((map[_playerRow][_playerColumn].hasItem()) && (map[_playerRow][_playerColumn].hasBooster())) ||
+                 ((map[_playerRow][_playerColumn].hasItem()) && (map[_playerRow][_playerColumn].hasDrain()))) { 
                    stopMap = 1; 
                    }
+                   
                else if (map[_playerRow][_playerColumn].hasItem()) {
-       
           stopMap = 1; 
         }
         
         else if (map[_playerRow][_playerColumn].hasMonster()) {
             stopMap = 1; 
-        
         }
         
         else if (map[_playerRow][_playerColumn].hasGame()) {
-
              stopMap = 1; 
         }
+        
         else stopMap = 0; 
        }
-
+//returns item at player location
     public Item theItem() { 
             return map[_playerRow][_playerColumn].getItem(); 
     }
+//returns monster at player location 
     public Monster theMonster() { 
         return map[_playerRow][_playerColumn].getMonster(); 
     }
+//returns game at player location 
     public Slots theGame() {
         return map[_playerRow][_playerColumn].getGame(); 
     }
-        
+//return column player is in 
     public int getPlayerColumn(){
         return this._playerColumn;
     }
+//return row player is in 
     public int getPlayerRow(){
         return this._playerRow;
     }
+//return a strung player location
     public String getPlayerLocation(){
         return this.playerLocation;
     }
+//allows a way to stop the map in another class
     public void changeStop(int c) { 
         stopMap = c; 
     }
-
 }
