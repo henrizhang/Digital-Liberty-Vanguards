@@ -4,7 +4,7 @@ public class Mountain extends Monster {
         super(NAMES[(int)(Math.random()*5)]); 
         _health=30;
         _defense=10;
-        _strength=(int)(Math.random() * 45) + 18;
+        _strength=(int)(Math.random() * 40) + 20;
         
     }
     

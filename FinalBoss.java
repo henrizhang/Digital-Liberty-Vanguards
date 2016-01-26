@@ -1,10 +1,10 @@
 public class FinalBoss extends Monster{
     public FinalBoss(){
         super("General Marius");
-        _health=300;
-        _defense=20;
-        _strength=(int)(Math.random() * 45) + 30;
-        _attack=2;
+        _health=200;
+        _defense=18;
+        _strength=(int)(Math.random() * 36) + 28;
+        _attack=1;
         
     }
     //Final Boss Constructor

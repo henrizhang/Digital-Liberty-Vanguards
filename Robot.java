@@ -3,7 +3,7 @@ public class Robot extends Monster {
         super("Deathbot"); 
         _health=45;
         _defense=15;
-        _strength=(int)(Math.random() * 45) + 35;
+        _strength=(int)(Math.random() * 45) + 24;
         
     }
     

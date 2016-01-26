@@ -7,8 +7,8 @@ public class Player extends Char {
         super("Player");
         _inventory = new ArrayList <Item> ();  
         _health = 250; 
-        _defense = 15;
-        _strength = (int)(Math.random() * 45) + 25;
+        _defense = 20;
+        _strength = (int)(Math.random() * 40) + 33;
         hasAccess=false;
 
     }

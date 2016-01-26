@@ -3,7 +3,7 @@ public class Soldiers extends Monster {
         super("Soldier"); 
         _health=45;
         _defense=15;
-        _strength=(int)(Math.random() * 45) + 20;
+        _strength=(int)(Math.random() * 40) + 20;
         
     }
     

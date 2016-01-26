@@ -98,11 +98,10 @@ public class Map {
     private int _playerColumn;
     private String playerLocation;
     private Item item, pot, weapon, weapon2, boost, drain;   
-    private Monster mountain,mountain2,mountain3,
+    private Monster mountain,mountain2,mountain3,mountain4,
     desert, desert2, desert3, desert4, desert5, desert6, 
     soldier, soldier2, soldier3, soldier4, soldier5, soldier6, soldier7, soldier8, soldier9, soldier10, soldier11,
-    robo, robo2, robo3,
-    kil, finalboss;
+    robo, robo2, robo3,finalboss;
     private Slots slot; 
     private int stopMap = 0; 
     
@@ -140,6 +139,7 @@ public class Map {
          mountain = new Mountain(); 
          mountain2 = new Mountain();
          mountain3 = new Mountain(); 
+         mountain4= new Mountain();
          desert = new Desert();
          desert2 = new Desert();
          desert3 = new Desert();
@@ -160,7 +160,6 @@ public class Map {
          
          pot = new Potion();
          slot = new Slots(); 
-         kil = new KilGrave();
          weapon = new Weapon(); 
          weapon2 = new Weapon(); 
          boost = new Booster(); 
@@ -173,7 +172,8 @@ public class Map {
          map[0][7].addMonster(robo);
          map[0][8].addMonster(finalboss);
          map[1][0].addMonster(desert5); 
-         map[1][2].addMonster(mountain2); 
+         map[1][2].addMonster(mountain2);
+         map[1][3].addItem(pot);
          map[1][4].addMonster(desert4); 
          map[1][6].addMonster(robo2); 
          map[1][7].addMonster(robo3);
@@ -185,7 +185,7 @@ public class Map {
          map[3][5].addMonster(mountain);
          map[3][8].addMonster(soldier2);
          map[4][2].addGame(slot); 
-         map[4][3].addItem(pot);
+         map[4][8].addItem(pot);
          map[4][7].addMonster(soldier3); 
          map[5][1].addMonster(soldier4); 
          map[5][3].addMonster(soldier5);
@@ -193,13 +193,14 @@ public class Map {
          map[5][7].addItem(weapon); 
          map[6][4].addMonster(soldier7);
          map[6][5].addItem(weapon2);
-         map[6][6].addMonster(kil);
+         map[6][6].addMonster(mountain4);
          map[7][2].addMonster(soldier8);
          map[7][4].addItem(pot);
          map[7][6].addItem(drain);
          map[7][7].addMonster(soldier9);
          map[8][2].addMonster(soldier10);
          map[8][5].addMonster(soldier11);
+         map[8][7].addItem(pot);
          map[8][8].addItem(boost);
     
          }
@@ -272,11 +273,11 @@ public class Map {
            if (((map[_playerRow][_playerColumn].hasItem()) && (map[_playerRow][_playerColumn].hasPotion())) ||
                 ((map[_playerRow][_playerColumn].hasItem()) && (map[_playerRow][_playerColumn].hasWeapon())) || 
                  ((map[_playerRow][_playerColumn].hasItem()) && (map[_playerRow][_playerColumn].hasBooster()))) { 
-                   System.out.println("You found a " + theItem() + " ! " + theItem().getPurpose()); 
+       
                    stopMap = 1; 
                    }
                else if (map[_playerRow][_playerColumn].hasItem()) {
-          System.out.println("You found a " + theItem() + " ! It's now in your inventory. You can now enter a building.. but where..?");
+       
           stopMap = 1; 
         }
         

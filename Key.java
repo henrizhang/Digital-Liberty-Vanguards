@@ -3,7 +3,7 @@ public class Key extends Item {
     
    public Key () { 
         _name = "key";
-        _purpose = "You now have access to" ;
+        _purpose = "You can now enter a building...but where..?" ;
         //must have a purpose
     }
     

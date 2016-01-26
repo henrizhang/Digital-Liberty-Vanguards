@@ -116,6 +116,13 @@ public class Cell {
     public Slots getGame() {
         return _slot;
     }
+    public boolean isBoss() { 
+        boolean see = false; 
+        if (_monsta instanceof FinalBoss) {
+            see = true;
+        }
+        return see;
+    }
     
     public void addGame(Slots slot) { 
         _slot = slot; 
